@@ -1,57 +1,191 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Javier Hita Siles - Perfil Personal</title>
-    <!-- Tailwind CSS para un diseño limpio y moderno -->
-    <script src="https://cdn.tailwindcss.com"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Marchica Shawarma · Kebab halal en Granada</title>
+<style>
+:root{--bg:#fff3d6;--surface:#fffaf0;--ink:#2b120a;--muted:#6b4a3a;--red:#d62a14;--orange:#ff8a00;--yellow:#ffc928;--green:#2f7d3a;--line:#2b120a;--ontop:#fff;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1c0f09;--surface:#2a1710;--ink:#ffeccb;--muted:#d1b296;--line:#ffc928;--red:#ff4a2e}}
+:root[data-theme="dark"]{--bg:#1c0f09;--surface:#2a1710;--ink:#ffeccb;--muted:#d1b296;--line:#ffc928;--red:#ff4a2e}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:1.02rem/1.6 "Trebuchet MS",Verdana,sans-serif}
+.d{font-family:Impact,Haettenschweiler,"Arial Narrow Bold","Arial Black",sans-serif;text-transform:uppercase;letter-spacing:.02em;font-weight:400}
+.wrap{max-width:980px;margin:0 auto;padding:0 20px}
+nav{position:sticky;top:0;z-index:5;background:var(--red);padding:calc(8px + env(safe-area-inset-top,0px)) 0 8px;border-bottom:4px solid var(--yellow)}
+nav .wrap{display:flex;gap:6px 16px;align-items:center;overflow-x:auto;white-space:nowrap}
+nav b{font-size:1.3rem;color:#fff;margin-right:auto}
+nav a{color:#fff;text-decoration:none;font-weight:700;font-size:.85rem;text-transform:uppercase}
+.hero{background:var(--red);color:#fff;position:relative;overflow:hidden;padding:48px 0 70px}
+.hero:after{content:"";position:absolute;left:0;right:0;bottom:0;height:22px;background:repeating-conic-gradient(var(--yellow) 0 25%,var(--ink) 0 50%) 0 0/22px 22px}
+.hero .wrap{display:grid;grid-template-columns:1.4fr 1fr;gap:24px;align-items:center}
+@media(max-width:700px){.hero .wrap{grid-template-columns:1fr}.cone{max-width:200px;margin:auto}}
+.sticker{display:inline-block;background:var(--yellow);color:#2b120a;padding:6px 14px;border-radius:6px;font-weight:800;transform:rotate(-3deg);box-shadow:3px 3px 0 #2b120a;text-transform:uppercase;font-size:.85rem}
+h1{font-size:clamp(3rem,13vw,6.4rem);line-height:.92;margin:14px 0;text-shadow:4px 4px 0 #2b120a}
+h1 span{color:var(--yellow)}
+.hero p{font-size:1.15rem;max-width:46ch}
+.btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
+.btn{display:inline-block;padding:13px 22px;border-radius:8px;text-decoration:none;font-weight:800;text-transform:uppercase;border:3px solid #2b120a;box-shadow:4px 4px 0 #2b120a;color:#2b120a;background:var(--yellow)}
+.btn.w{background:#fff}
+.btn:active{transform:translate(3px,3px);box-shadow:1px 1px 0 #2b120a}
+.cone svg{width:100%;height:auto;animation:spin 6s linear infinite;transform-origin:50% 50%}
+@keyframes spin{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(4deg)}}
+@media(prefers-reduced-motion:reduce){.cone svg{animation:none}}
+.marq{background:var(--yellow);color:#2b120a;border-block:4px solid #2b120a;overflow:hidden;white-space:nowrap}
+.marq div{display:inline-block;padding:10px 0;animation:m 28s linear infinite;font-size:1.3rem}
+@keyframes m{to{transform:translateX(-50%)}}
+@media(prefers-reduced-motion:reduce){.marq div{animation:none}}
+section{padding:46px 0}
+h2{font-size:clamp(2rem,6vw,3rem);line-height:1;margin:0 0 20px;color:var(--red)}
+h2:after{content:"";display:block;width:90px;height:8px;background:var(--orange);margin-top:8px;border-radius:4px}
+.alt{background:var(--surface);border-block:3px solid var(--line)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.card{background:var(--surface);border:3px solid var(--line);border-radius:14px;padding:18px;box-shadow:5px 5px 0 var(--line)}
+.alt .card{background:var(--bg)}
+.card h3{margin:0 0 6px;font-size:1.5rem;color:var(--red)}
+.card p{margin:0;color:var(--muted);font-size:.95rem}
+.big{font-size:3rem;line-height:1;color:var(--orange);display:block}
+.emo{font-size:2rem}
+.steps{counter-reset:s;display:grid;gap:14px;padding:0;list-style:none}
+.steps li{counter-increment:s;display:flex;gap:16px;align-items:flex-start;background:var(--surface);border:3px solid var(--line);border-radius:14px;padding:14px 16px}
+.steps li:before{content:counter(s);flex:none;width:46px;height:46px;border-radius:50%;background:var(--red);color:#fff;display:grid;place-items:center;font:1.6rem Impact,"Arial Black",sans-serif}
+.steps b{display:block}
+.tbl{overflow-x:auto;border:3px solid var(--line);border-radius:14px}
+table{border-collapse:collapse;width:100%;min-width:520px}
+th{background:var(--red);color:#fff;text-align:left;padding:12px;text-transform:uppercase;font-size:.85rem}
+td{padding:12px;border-top:2px solid var(--line);vertical-align:top;font-size:.95rem}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
+.badge{background:var(--green);color:#fff;padding:5px 12px;border-radius:999px;font-weight:700;font-size:.85rem}
+.badge.o{background:var(--orange);color:#2b120a}
+.rev{background:var(--surface);border:3px solid var(--line);border-radius:14px;padding:16px;position:relative}
+.rev:before{content:"“";position:absolute;top:-6px;left:12px;font:4rem Impact,serif;color:var(--orange);line-height:1}
+.rev p{margin:18px 0 6px}
+.rev small{color:var(--muted)}
+details{background:var(--surface);border:3px solid var(--line);border-radius:12px;padding:12px 16px;margin-bottom:10px}
+summary{cursor:pointer;font-weight:800}
+details p{margin:8px 0 0;color:var(--muted)}
+.note{background:var(--yellow);color:#2b120a;border:3px dashed #2b120a;border-radius:12px;padding:14px 16px;font-weight:600}
+.cta{background:var(--red);color:#fff;text-align:center;padding:54px 0;border-top:6px solid var(--yellow)}
+.cta h2{color:#fff}.cta h2:after{margin-inline:auto;background:var(--yellow)}
+footer{background:#2b120a;color:#e9cfae;padding:26px 0 40px;font-size:.85rem}
+a{color:var(--red)}
+</style>
 </head>
-<body class="bg-gradient-to-br from-indigo-50 to-blue-100 min-h-screen flex items-center justify-center p-4">
+<body>
 
-    <div class="max-w-md w-full bg-white rounded-2xl shadow-xl overflow-hidden p-6 sm:p-8 transform transition duration-500 hover:scale-[1.01]">
-        
-        <!-- Cabecera: Nombre y Datos Principales (Sin foto) -->
-        <div class="text-center pb-4 border-b border-gray-100">
-            <h1 class="text-2xl font-bold text-gray-800">Javier Hita Siles</h1>
-            <p class="text-indigo-600 font-medium text-sm mt-1">17 años — Estudiante de ASIR</p>
-            <p class="text-gray-500 text-xs mt-0.5">IES Zaidín Vergeles</p>
-        </div>
+<nav><div class="wrap"><b class="d">Marchica</b><a href="#carta">Carta</a><a href="#guia">Guía</a><a href="#locales">Locales</a><a href="#opiniones">Opiniones</a><a href="#faq">FAQ</a></div></nav>
 
-        <!-- Sección: Acerca de mí -->
-        <div class="mt-6">
-            <h2 class="text-xs font-semibold text-gray-400 uppercase tracking-wider">Acerca de mí</h2>
-            <p class="text-gray-600 text-sm mt-2 leading-relaxed">
-                ¡Hola! Soy Javier, un apasionado de la informática y la tecnología de 17 años. Actualmente curso ASIR en el IES Zaidín Vergeles. Me considero una persona analítica, curiosa y con una gran inquietud por entender cómo funcionan los sistemas desde dentro, buscando siempre la eficiencia y la seguridad en cada proyecto que emprendo.
-            </p>
-        </div>
-
-        <!-- Sección: Personalidad y forma de ser -->
-        <div class="mt-6">
-            <h2 class="text-xs font-semibold text-gray-400 uppercase tracking-wider">Cómo soy</h2>
-            <p class="text-gray-600 text-sm mt-2 leading-relaxed">
-                Fuera de las aulas, disfruto experimentando con servidores, redes y desarrollo de software. Me define la perseverancia: cuando me enfrento a un error o un reto técnico complejo, no paro hasta encontrar la solución óptima. Valoro mucho el trabajo en equipo, la constante autoformación y el aprendizaje práctico.
-            </p>
-        </div>
-
-        <!-- Sección: Habilidades y Tecnologías -->
-        <div class="mt-6">
-            <h2 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Habilidades & Intereses</h2>
-            <div class="flex flex-wrap gap-2">
-                <span class="bg-indigo-50 text-indigo-700 text-xs font-medium px-2.5 py-1 rounded-full">Administración de Sistemas</span>
-                <span class="bg-indigo-50 text-indigo-700 text-xs font-medium px-2.5 py-1 rounded-full">Redes y Servidores</span>
-                <span class="bg-indigo-50 text-indigo-700 text-xs font-medium px-2.5 py-1 rounded-full">PHP & Python</span>
-                <span class="bg-indigo-50 text-indigo-700 text-xs font-medium px-2.5 py-1 rounded-full">Bases de Datos (MySQL)</span>
-                <span class="bg-indigo-50 text-indigo-700 text-xs font-medium px-2.5 py-1 rounded-full">Resolución de problemas</span>
-            </div>
-        </div>
-
-        <!-- Sección: Contacto -->
-        <div class="mt-8 pt-6 border-t border-gray-100 flex justify-center space-x-4">
-            <a href="mailto:hitasiles@gmail.com" class="text-gray-600 hover:text-indigo-600 font-medium text-sm transition">✉️ Contactar por Correo</a>
-        </div>
-
+<header class="hero"><div class="wrap">
+  <div>
+    <span class="sticker">Halal · Granada</span>
+    <h1 class="d">Marchica <span>Shawarma</span></h1>
+    <p>Carne jugosa, salsa con fama propia y precios de estudiante. El kebab que se recomienda de boca en boca por todo Granada.</p>
+    <div class="btns">
+      <a class="btn" href="https://maps.app.goo.gl/yMqHaS7MZAc7jiHS7" target="_blank" rel="noopener">📍 Cómo llegar</a>
+      <a class="btn w" href="#carta">🌯 Ver carta</a>
     </div>
+  </div>
+  <div class="cone" aria-hidden="true">
+    <svg viewBox="0 0 200 260"><rect x="96" y="6" width="8" height="248" rx="4" fill="#2b120a"/><path d="M60 40h80l22 190H38z" fill="#b5532a" stroke="#2b120a" stroke-width="6" stroke-linejoin="round"/><path d="M52 90h96M46 140h108M42 190h116" stroke="#ff8a00" stroke-width="10" stroke-linecap="round"/><path d="M70 60l8 170M100 44v186M130 60l-8 170" stroke="#7a2a12" stroke-width="4" opacity=".6"/><ellipse cx="100" cy="40" rx="42" ry="9" fill="#ffc928" stroke="#2b120a" stroke-width="5"/></svg>
+  </div>
+</div></header>
+
+<div class="marq" aria-hidden="true"><div class="d">
+  Shawarma ✦ Durum ✦ Falafel ✦ Halal ✦ Para llevar ✦ Calle Elvira ✦ Salsa de la casa ✦ Precios de estudiante ✦ Shawarma ✦ Durum ✦ Falafel ✦ Halal ✦ Para llevar ✦ Calle Elvira ✦ Salsa de la casa ✦ Precios de estudiante ✦
+</div></div>
+
+<section><div class="wrap">
+  <h2 class="d">De un vistazo</h2>
+  <div class="grid">
+    <div class="card"><span class="big d">4,4★</span><p>Media en más de 1.400 opiniones de la sede de la calle Elvira.</p></div>
+    <div class="card"><span class="big d">1–10€</span><p>Precio medio por persona según directorios locales.</p></div>
+    <div class="card"><span class="big d">8,0</span><p>Nota en Gastroranking, con casi 1.600 opiniones.</p></div>
+    <div class="card"><span class="big d">3 locales</span><p>Con la ubicación de tu enlace, tres puntos de Marchica en el área de Granada.</p></div>
+  </div>
+  <div class="badges"><span class="badge">Halal</span><span class="badge">Opciones vegetarianas</span><span class="badge o">Para llevar</span><span class="badge o">Económico</span><span class="badge o">Servicio rápido</span></div>
+</div></section>
+
+<section class="alt" id="carta"><div class="wrap">
+  <h2 class="d">La carta</h2>
+  <div class="grid">
+    <div class="card"><span class="emo">🌯</span><h3 class="d">Durum</h3><p>Wrap fino y bien relleno de carne, verduras y salsa. Uno de los platos más citados por los clientes.</p></div>
+    <div class="card"><span class="emo">🧀</span><h3 class="d">Completo</h3><p>La versión con queso y huevo. Según una guía de comida barata, ronda los 3 a 5 euros.</p></div>
+    <div class="card"><span class="emo">🥙</span><h3 class="d">Shawarma</h3><p>Carne cortada del asador en pan de pita, con las salsas de la casa.</p></div>
+    <div class="card"><span class="emo">🧆</span><h3 class="d">Falafel</h3><p>La opción vegetariana para llevar, en el mismo rango de precio.</p></div>
+    <div class="card"><span class="emo">🍟</span><h3 class="d">Patatas</h3><p>Los clientes mencionan las patatas como acompañamiento habitual del kebab.</p></div>
+    <div class="card"><span class="emo">🌶️</span><h3 class="d">Picante</h3><p>Las reseñas hablan de salsas picantes: pregunta cuál se adapta a tu aguante.</p></div>
+  </div>
+  <p class="note" style="margin-top:18px">La carta completa con precios exactos está pendiente: no la he encontrado publicada. Los importes son orientativos.</p>
+</div></section>
+
+<section id="guia"><div class="wrap">
+  <h2 class="d">Guía del buen kebab</h2>
+  <div class="grid" style="margin-bottom:26px">
+    <div class="card"><h3 class="d">Shawarma</h3><p>Carne marinada que se asa en vertical y se corta en lonchas finas. Es el nombre habitual en Oriente Medio.</p></div>
+    <div class="card"><h3 class="d">Döner</h3><p>Primo turco del shawarma. En España «kebab» suele significar justo esto, en pan o en plato.</p></div>
+    <div class="card"><h3 class="d">Durum</h3><p>Es el formato: la carne va enrollada en una torta de trigo fina, como un wrap.</p></div>
+  </div>
+  <h3 class="d" style="font-size:1.8rem;margin:0 0 12px">Cómo pedir como un local</h3>
+  <ol class="steps">
+    <li><div><b>Elige el formato</b>Durum para llevártelo en la mano, pita si prefieres más pan, o falafel si vas sin carne.</div></li>
+    <li><div><b>Elige la carne</b>Pregunta qué hay hoy en el asador; la oferta puede variar según el local.</div></li>
+    <li><div><b>Prueba la salsa de la casa</b>Varias reseñas la destacan como lo mejor del sitio. Pídela en cantidad razonable la primera vez.</div></li>
+    <li><div><b>Decide el picante</b>Dilo al pedir, que luego no hay vuelta atrás.</div></li>
+    <li><div><b>Evita la hora punta</b>Hay quien cuenta que tuvo que esperar por la cola. Fuera de las horas de comida y cena se va más ligero.</div></li>
+  </ol>
+  <h3 class="d" style="font-size:1.8rem;margin:26px 0 12px">Alergias y dieta</h3>
+  <p>El pan o la torta contienen gluten y las salsas y el queso pueden llevar lácteos; el «completo» lleva huevo. Si tienes alguna alergia, dilo al pedir. En directorios locales aparece como halal; si es importante para ti, confírmalo directamente en el local.</p>
+</div></section>
+
+<section class="alt" id="locales"><div class="wrap">
+  <h2 class="d">Dónde encontrarnos</h2>
+  <div class="tbl"><table>
+    <tr><th>Local</th><th>Dirección</th><th>Notas</th></tr>
+    <tr><td><b>Marchica Shawarma</b></td><td>C/ Elvira, 72 · 18010 Granada (Albaicín)</td><td>Mostrador para llevar, sin mesas. Calle famosa por sus kebabs.</td></tr>
+    <tr><td><b>Shawarma Marchica II</b></td><td>C/ Pedro Antonio de Alarcón, 54 · 18002 Granada</td><td>Cerca de la zona de Camino de Ronda. Media de 4,5 en unas 610 opiniones.</td></tr>
+    <tr><td><b>Marchica (ubicación de Maps)</b></td><td>Zona sur de Granada / Armilla</td><td><a href="https://maps.app.goo.gl/yMqHaS7MZAc7jiHS7" target="_blank" rel="noopener">Abrir en Google Maps</a></td></tr>
+  </table></div>
+  <p class="note" style="margin-top:18px">Horario y teléfono: pendientes de confirmar. Mira la ficha de Google Maps antes de ir, porque pueden cambiar según el local y la temporada.</p>
+  <h3 class="d" style="font-size:1.8rem;margin:26px 0 8px">Plan completo en el Albaicín</h3>
+  <p>La calle Elvira concentra varios de los kebabs más comentados de Granada. Una idea clásica: kebab para llevar y, de postre, una de las teterías de la zona.</p>
+</div></section>
+
+<section id="opiniones"><div class="wrap">
+  <h2 class="d">Lo que dice la gente</h2>
+  <div class="grid">
+    <div class="rev"><p>Clientes lo describen como el mejor kebab de Granada y destacan que no resulta pesado después.</p><small>Gastroranking</small></div>
+    <div class="rev"><p>Reseñas de Google valoran la carne jugosa y el servicio rápido, con elogios al trato amable del equipo.</p><small>Google · 2025–2026</small></div>
+    <div class="rev"><p>Una opinión señala que su salsa es de las mejores de la ciudad.</p><small>Google · octubre 2025</small></div>
+    <div class="rev"><p>Algunos clientes mencionan la cola como prueba de su popularidad, y otros lo recomiendan como opción halal económica.</p><small>Gastroranking</small></div>
+  </div>
+  <div class="tbl" style="margin-top:22px"><table>
+    <tr><th>Fuente</th><th>Local</th><th>Valoración</th></tr>
+    <tr><td>Directorio Intravel</td><td>Elvira, 72</td><td>4,4 · 1.475 opiniones</td></tr>
+    <tr><td>Gastroranking</td><td>Marchica Shawarma</td><td>8,0 · 1.598 opiniones</td></tr>
+    <tr><td>Guía de comida barata</td><td>Calle Elvira</td><td>4,2</td></tr>
+    <tr><td>Directorio Intravel</td><td>Marchica II</td><td>4,5 · 610 opiniones</td></tr>
+  </table></div>
+</div></section>
+
+<section class="alt" id="faq"><div class="wrap">
+  <h2 class="d">Preguntas frecuentes</h2>
+  <details><summary>¿Es halal?</summary><p>Los directorios locales y las guías lo incluyen entre los restaurantes halal de Granada. Si necesitas certeza, pregunta en el local.</p></details>
+  <details><summary>¿Hay opciones vegetarianas?</summary><p>Sí: el falafel y los platos con queso aparecen en las reseñas. Pide sin carne y confirma los ingredientes.</p></details>
+  <details><summary>¿Hay mesas para comer allí?</summary><p>Según una guía, la sede de la calle Elvira es un mostrador para llevar sin asientos. El resto de locales puede variar.</p></details>
+  <details><summary>¿Cuánto cuesta?</summary><p>Los directorios sitúan el gasto medio entre 1 y 10 euros por persona, con wraps de 3 a 5 euros en Elvira.</p></details>
+  <details><summary>¿Hacen reparto a domicilio?</summary><p>Marchica II aparece en plataformas de recogida y reparto, pero con disponibilidad variable. Revisa la app que uses.</p></details>
+  <details><summary>¿Aceptan tarjeta?</summary><p>No he encontrado este dato. Lleva algo de efectivo por si acaso.</p></details>
+</div></section>
+
+<section class="cta"><div class="wrap">
+  <h2 class="d">¿Hambre?</h2>
+  <p>Abre el mapa y ven a probar el durum del que habla media Granada.</p>
+  <div class="btns" style="justify-content:center"><a class="btn" href="https://maps.app.goo.gl/yMqHaS7MZAc7jiHS7" target="_blank" rel="noopener">📍 Abrir en Google Maps</a></div>
+</div></section>
+
+<footer><div class="wrap">Información recopilada de fuentes públicas (Google Maps, Gastroranking, Intravel, Salir.com y guías locales). Horarios, precios y carta pueden haber cambiado: confirma siempre con el local.</div></footer>
 
 </body>
 </html>
