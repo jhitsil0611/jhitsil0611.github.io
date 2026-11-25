@@ -23,6 +23,8 @@ const NEGOCIO = {
   // [día JS (0=domingo), apertura, cierre] en minutos
   abierto: { 0: null, 1: [420, 930], 2: [420, 930], 3: [420, 930], 4: [420, 930], 5: [420, 930], 6: [480, 750] },
   mapsUrl: "https://maps.app.goo.gl/N6wUgZ7h8tAcmJG47",
+  // Dirección pública de la carta (GitHub Pages). Los QR de las mesas apuntan aquí con ?mesa=N
+  urlCarta: "https://jhitsil0611.github.io/#carta",
 };
 
 const CATEGORIAS = [
