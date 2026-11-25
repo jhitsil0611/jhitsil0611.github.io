@@ -4,6 +4,23 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0f3d2e">
+<script>
+// Si se entra desde el QR de una mesa (?mesa=N) y el navegador no es Chrome, intenta abrir la misma página en Chrome.
+// iPhone: esquema googlechromes:// (iOS pregunta "¿Abrir en Chrome?"). Android: intent:// con vuelta a la web si no hay Chrome.
+(function(){
+  var ua = navigator.userAgent, url = location.href;
+  if (!/[?&]mesa=\d+/.test(location.search)) return;
+  var ios = /iPhone|iPad|iPod/.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1);
+  var android = /Android/.test(ua);
+  var esChrome = ios ? /CriOS/.test(ua) : (/Chrome\//.test(ua) && !/SamsungBrowser|EdgA|OPR|Firefox|; wv\)|YaBrowser|MiuiBrowser/.test(ua));
+  if (esChrome || !(ios || android)) return;
+  var destino = ios ? url.replace(/^https:\/\//, "googlechromes://").replace(/^http:\/\//, "googlechrome://")
+    : "intent://" + url.replace(/^https?:\/\//, "") + "#Intent;scheme=https;package=com.android.chrome;S.browser_fallback_url=" + encodeURIComponent(url) + ";end";
+  window.ABRIR_EN_CHROME = destino;
+  try { if (sessionStorage.getItem("rodri_chrome_intentado")) return; sessionStorage.setItem("rodri_chrome_intentado", "1"); } catch (e) {}
+  location.href = destino;
+})();
+</script>
 <title>Rodri · Cafetería en el Zaidín</title>
 <meta name="description" content="Cafetería Rodri, Zaidín (Granada). Tostadas con jamón cortado a cuchillo, pitufos, molletes y cafés. Carta online y pedidos para recoger.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -83,6 +100,8 @@ section{padding:80px 0 20px}
 /* ---------- CARTA ---------- */
 .mesa-aviso{display:none;align-items:center;gap:12px;background:var(--ink);color:#fff;padding:14px 20px;border-radius:var(--r-s);margin-bottom:20px;font-weight:600}
 .mesa-aviso b{background:var(--lima);color:var(--ink);border-radius:10px;padding:4px 10px}
+.mesa-aviso{flex-wrap:wrap}
+.mesa-aviso a.chrome{margin-left:auto;background:#fff;color:var(--ink);border-radius:999px;padding:8px 14px;font-size:13px;font-weight:800;white-space:nowrap}
 .herramientas{position:sticky;top:84px;z-index:20;display:flex;gap:10px;align-items:center;padding:10px;margin:0 -10px 20px;border-radius:999px;
   background:rgba(244,244,241,.8);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
 .chips{display:flex;gap:6px;overflow-x:auto;flex:1;scrollbar-width:none}
@@ -346,7 +365,10 @@ footer a{font-weight:700;color:var(--ink)}
 <script>
 const $ = s => document.querySelector(s);
 const params = new URLSearchParams(location.search);
-const mesa = params.get("mesa");
+// Mesa desde el QR (?mesa=N). Se recuerda durante la visita aunque se recargue la página.
+let mesa = (params.get("mesa") || "").replace(/\D/g, "").slice(0, 3);
+try { if (mesa) sessionStorage.setItem("rodri_mesa", mesa); else mesa = sessionStorage.getItem("rodri_mesa") || ""; } catch (e) {}
+mesa = +mesa > 0 ? String(+mesa) : null;
 let carro = [];
 let categoria = "todas";
 let modo = mesa ? "mesa" : "recoger";
@@ -479,7 +501,9 @@ function pintarCajon(){
   $("#cuerpo").innerHTML = `<div id="lineas"></div><div class="form">
     <label>¿Cómo lo quieres?</label>
     <div class="modo"><button data-modo="recoger" class="${modo==='recoger'?'on':''}">🛍 Para recoger</button><button data-modo="mesa" class="${modo==='mesa'?'on':''}">🍽 En mesa</button></div>
-    ${modo==='mesa' ? `<label for="fMesa">Número de mesa</label><input id="fMesa" type="number" inputmode="numeric" min="1" max="30" value="${mesa||''}" placeholder="Ej. 4">`
+    ${modo==='mesa' ? (mesa
+        ? `<label for="fMesa">Mesa</label><input id="fMesa" value="${mesa}" readonly style="font-weight:800;background:var(--lima);border-color:var(--lima)"><p style="font-size:12px;color:var(--ink-2);margin-top:6px">Puesta automáticamente desde el QR de tu mesa.</p>`
+        : `<label for="fMesa">Número de mesa</label><input id="fMesa" type="number" inputmode="numeric" min="1" max="30" placeholder="Ej. 4">`)
       : `<label for="fHora">Hora de recogida</label><select id="fHora">${horas}</select>`}
     <label for="fNombre">Nombre</label><input id="fNombre" autocomplete="name" placeholder="Tu nombre">
     <label for="fTel">Teléfono (opcional)</label><input id="fTel" type="tel" autocomplete="tel" placeholder="600 000 000">
@@ -527,7 +551,13 @@ const obs = "IntersectionObserver" in window ? new IntersectionObserver(es=>es.f
 document.querySelectorAll(".aparece").forEach((el,i)=>{ el.style.transitionDelay = (i%4*70)+"ms"; obs ? obs.observe(el) : el.classList.add("visto"); });
 
 // ---------- Inicio ----------
-if (mesa){ const a=$("#mesaAviso"); a.style.display="flex"; a.innerHTML=`<b>Mesa ${mesa}</b> Pide desde aquí y te lo llevamos.`; }
+if (mesa){
+  const a=$("#mesaAviso"); a.style.display="flex"; a.innerHTML=`<b>Mesa ${mesa}</b> Pide desde aquí y te lo llevamos.` +
+    (window.ABRIR_EN_CHROME ? `<a class="chrome" href="${window.ABRIR_EN_CHROME}">Abrir en Chrome ↗</a>` : "");
+  $("#abrirCarro").innerHTML = `Mesa ${mesa} · <b id="contador">0</b>`;
+  // Entrar directamente a la carta al escanear el QR
+  addEventListener("load", ()=>{ const c=$("#carta"); if (c) scrollTo({top:c.offsetTop-80, behavior:"instant"}); });
+}
 estadoAhora(); pintarHorario(); pintarBarras(); pintarChips(); actualizar();
 </script>
 </body>
