@@ -197,7 +197,7 @@ document.querySelectorAll(".tabs button").forEach(b=>b.onclick=()=>{
 });
 
 // QR de mesas
-$("#base").value = location.href.replace(/panel\.html.*$/,"index.html");
+$("#base").value = NEGOCIO.urlCarta;
 function generarQR(){
   const base = $("#base").value.trim(), n = +$("#nMesas").value || 12;
   $("#qrs").innerHTML = "";
@@ -205,7 +205,7 @@ function generarQR(){
     const d = document.createElement("div"); d.className="qr";
     d.innerHTML = `<h3>Mesa ${m}</h3><div class="codigo"></div><b>Escanea y pide</b><br><small>Rodri · Cafetería</small>`;
     $("#qrs").appendChild(d);
-    if (window.QRCode) new QRCode(d.querySelector(".codigo"), {text: base+(base.includes("?")?"&":"?")+"mesa="+m, width:130, height:130, colorDark:"#0c0f0d", colorLight:"#ffffff"});
+    if (window.QRCode) new QRCode(d.querySelector(".codigo"), {text: base.split("?")[0].split("#")[0]+"?mesa="+m, width:130, height:130, colorDark:"#0c0f0d", colorLight:"#ffffff"});
     else d.querySelector(".codigo").textContent = "(sin conexión para generar QR)";
   }
 }
