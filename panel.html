@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Panel del bar · Rodri</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<style>
+:root{--fondo:#0c0f0d;--panel:#161a17;--panel2:#1f2520;--texto:#f4f4f1;--suave:#8d968f;--toldo:#1f6b4f;--oro:#c8f169;--tomate:#ff5a36;--azul:#64d2ff;--linea:rgba(255,255,255,.07)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Plus Jakarta Sans",system-ui,sans-serif;background:var(--fondo);color:var(--texto);min-height:100vh}
+h1,h2,h3{letter-spacing:-.03em}
+button{font:inherit;cursor:pointer;border:0;color:inherit;background:none}
+header{display:flex;align-items:center;gap:16px;padding:18px 24px;border-bottom:1px solid var(--linea);flex-wrap:wrap}
+header h1{font-size:24px;font-weight:800;display:flex;align-items:center;gap:10px}header h1 i{width:30px;height:30px;border-radius:10px;background:var(--oro);color:#0c0f0d;display:grid;place-items:center;font-style:normal;font-size:16px}
+header .reloj{margin-left:auto;letter-spacing:-.04em;font-size:22px;color:var(--oro)}
+.tabs{display:flex;gap:6px;background:var(--panel);padding:4px;border-radius:999px}
+.tabs button{padding:8px 16px;border-radius:999px;font-weight:600;font-size:14px;color:var(--suave)}
+.tabs button.on{background:var(--texto);color:var(--fondo)}
+main{padding:24px}
+.vista{display:none}.vista.on{display:block}
+
+/* tablero */
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:22px}
+.kpi{background:var(--panel);border-radius:24px;padding:22px;border:1px solid var(--linea)}
+.kpi small{color:var(--suave);font-size:13px}
+.kpi b{display:block;letter-spacing:-.04em;font-size:36px;margin-top:4px}
+.tablero{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;align-items:start}
+.col{background:var(--panel);border-radius:24px;border:1px solid var(--linea);padding:14px;min-height:300px}
+.col h3{font-family:inherit;font-size:13px;text-transform:uppercase;letter-spacing:.1em;display:flex;justify-content:space-between;margin-bottom:12px;color:var(--suave)}
+.col h3 i{width:10px;height:10px;border-radius:50%;display:inline-block;margin-right:8px}
+.tarjeta{background:var(--panel2);border-radius:18px;padding:16px;margin-bottom:10px;border-top:3px solid var(--c)}
+.tarjeta .top{display:flex;justify-content:space-between;align-items:baseline}
+.tarjeta .num{letter-spacing:-.04em;font-size:24px;font-weight:900}
+.tarjeta .dest{font-size:12px;font-weight:700;padding:3px 8px;border-radius:999px;background:rgba(255,255,255,.08)}
+.tarjeta ul{list-style:none;margin:10px 0;font-size:14px}
+.tarjeta li{padding:2px 0}
+.tarjeta .nota{font-size:13px;color:var(--oro);margin-bottom:8px}
+.tarjeta .meta{display:flex;justify-content:space-between;font-size:12px;color:var(--suave)}
+.tarjeta .sig{margin-top:12px;width:100%;padding:11px;border-radius:999px;background:var(--c);color:#0c0f0d;font-weight:800}
+.vacio{color:var(--suave);font-size:14px;text-align:center;padding:30px 0}
+.acciones{display:flex;gap:10px;margin-bottom:18px;flex-wrap:wrap}
+.acciones button{padding:10px 16px;border-radius:999px;background:var(--panel);font-size:14px;font-weight:600}
+
+/* ventas */
+.dos{display:grid;grid-template-columns:1.2fr 1fr;gap:14px}
+.caja{background:var(--panel);border-radius:24px;padding:24px;border:1px solid var(--linea)}
+.caja h2{font-size:22px;margin-bottom:14px}
+.barra{display:grid;grid-template-columns:170px 1fr 40px;gap:10px;align-items:center;margin:8px 0;font-size:14px}
+.barra span.b{height:14px;background:rgba(255,255,255,.06);border-radius:99px;overflow:hidden}
+.barra span.b i{display:block;height:100%;background:var(--oro);border-radius:99px}
+.horas{display:flex;align-items:end;gap:6px;height:200px;padding-top:10px}
+.horas div{flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;font-size:11px;color:var(--suave);height:100%;justify-content:end}
+.horas div i{width:100%;background:var(--oro);border-radius:6px 6px 0 0;min-height:2px}
+
+/* QR */
+.qrs{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px}
+.qr{background:#fff;color:#0c0f0d;border-radius:24px;padding:16px;text-align:center}
+.qr h3{font-size:20px;margin-bottom:8px}
+.qr .codigo{display:flex;justify-content:center;margin:8px 0}
+.qr small{font-size:11px}
+.qr-form{display:flex;gap:10px;align-items:center;margin-bottom:18px;flex-wrap:wrap}
+.qr-form input{padding:10px 12px;border-radius:10px;border:0;background:var(--panel);color:var(--texto);font:inherit;width:300px}
+@media (max-width:1000px){.tablero,.kpis{grid-template-columns:repeat(2,1fr)}.dos{grid-template-columns:1fr}}
+@media (max-width:560px){.tablero,.kpis{grid-template-columns:1fr}.barra{grid-template-columns:110px 1fr 30px}}
+@media print{header,.acciones,.qr-form,.tabs{display:none}body{background:#fff}.vista{display:none}#vQR{display:block}.qr{border:1px solid #ccc;break-inside:avoid}}
+</style>
+</head>
+<body>
+<header>
+  <h1><i>R</i>Rodri · Barra</h1>
+  <div class="tabs">
+    <button class="on" data-v="vPedidos">Pedidos</button>
+    <button data-v="vVentas">Ventas de hoy</button>
+    <button data-v="vQR">QR de mesas</button>
+  </div>
+  <div class="reloj" id="reloj"></div>
+</header>
+
+<main>
+  <section class="vista on" id="vPedidos">
+    <div class="kpis">
+      <div class="kpi"><small>Pedidos hoy</small><b id="kPedidos">0</b></div>
+      <div class="kpi"><small>Facturación hoy</small><b id="kTotal">0 €</b></div>
+      <div class="kpi"><small>Ticket medio</small><b id="kMedio">0 €</b></div>
+      <div class="kpi"><small>Pendientes</small><b id="kPend">0</b></div>
+    </div>
+    <div class="acciones">
+      <button id="demo">+ Generar pedidos de ejemplo</button>
+      <button id="borrar">Vaciar pedidos</button>
+      <a href="index.html" style="padding:9px 14px;border-radius:999px;background:var(--panel);font-size:14px;font-weight:600;color:inherit;text-decoration:none">Abrir la web de clientes ↗</a>
+    </div>
+    <div class="tablero" id="tablero"></div>
+  </section>
+
+  <section class="vista" id="vVentas">
+    <div class="dos">
+      <div class="caja"><h2>Lo más pedido</h2><div id="top"></div></div>
+      <div class="caja"><h2>Pedidos por hora</h2><div class="horas" id="horas"></div></div>
+    </div>
+  </section>
+
+  <section class="vista" id="vQR">
+    <div class="qr-form">
+      <label for="base" style="font-size:14px;color:var(--suave)">Dirección de la carta:</label>
+      <input id="base">
+      <label for="nMesas" style="font-size:14px;color:var(--suave)">Mesas:</label>
+      <input id="nMesas" type="number" min="1" max="40" value="12" style="width:80px">
+      <button id="genQR" style="padding:10px 14px;border-radius:10px;background:var(--oro);color:#0c0f0d;font-weight:800">Generar</button>
+      <button onclick="print()" style="padding:10px 14px;border-radius:10px;background:var(--panel);font-weight:700">Imprimir</button>
+    </div>
+    <div class="qrs" id="qrs"></div>
+  </section>
+</main>
+
+<script src="datos.js"></script>
+<script>
+const $ = s => document.querySelector(s);
+const ESTADOS = [
+  {id:"nuevo", nombre:"Nuevos", color:"#ff7a5c", sig:"Preparar"},
+  {id:"preparando", nombre:"Preparando", color:"#ffc65c", sig:"Marcar listo"},
+  {id:"listo", nombre:"Listos", color:"#c8f169", sig:"Entregado"},
+  {id:"entregado", nombre:"Entregados", color:"#64d2ff", sig:null},
+];
+const esHoy = iso => new Date(iso).toDateString() === new Date().toDateString();
+const hora = iso => new Date(iso).toLocaleTimeString("es-ES",{hour:"2-digit",minute:"2-digit"});
+
+function pintar(){
+  const todos = leerPedidos(), hoy = todos.filter(p=>esHoy(p.fecha));
+  const total = hoy.reduce((s,p)=>s+p.total,0);
+  $("#kPedidos").textContent = hoy.length;
+  $("#kTotal").textContent = euros(total);
+  $("#kMedio").textContent = euros(hoy.length? total/hoy.length : 0);
+  $("#kPend").textContent = todos.filter(p=>p.estado!=="entregado").length;
+
+  $("#tablero").innerHTML = ESTADOS.map(e=>{
+    const lista = todos.filter(p=>p.estado===e.id).sort((a,b)=>a.fecha<b.fecha?-1:1);
+    const visibles = e.id==="entregado" ? lista.slice(-6).reverse() : lista;
+    return `<div class="col"><h3><span><i style="background:${e.color}"></i>${e.nombre}</span><span>${lista.length}</span></h3>
+      ${visibles.map(p=>`<div class="tarjeta" style="--c:${e.color}">
+        <div class="top"><span class="num">#${p.num}</span><span class="dest">${p.modo==="mesa"?"🍽 ":"🛍 "}${p.destino.replace("Recoger · ","")}</span></div>
+        <ul>${p.lineas.map(l=>`<li><b>${l.cant}×</b> ${l.nombre}${l.tam?` <span style="color:var(--suave)">(${l.tam})</span>`:""}</li>`).join("")}</ul>
+        ${p.notas?`<div class="nota">✎ ${p.notas}</div>`:""}
+        <div class="meta"><span>${p.nombre} · ${hora(p.fecha)}</span><b>${euros(p.total)}</b></div>
+        ${e.sig?`<button class="sig" data-num="${p.num}">${e.sig} →</button>`:""}
+      </div>`).join("") || `<div class="vacio">Sin pedidos</div>`}</div>`;
+  }).join("");
+  pintarVentas(hoy);
+}
+
+function pintarVentas(hoy){
+  const cuenta = {};
+  hoy.forEach(p=>p.lineas.forEach(l=>{ cuenta[l.nombre]=(cuenta[l.nombre]||0)+l.cant; }));
+  const top = Object.entries(cuenta).sort((a,b)=>b[1]-a[1]).slice(0,8), max = top[0]?top[0][1]:1;
+  $("#top").innerHTML = top.map(([n,v])=>`<div class="barra"><span>${n}</span><span class="b"><i style="width:${v/max*100}%"></i></span><b>${v}</b></div>`).join("") || `<div class="vacio">Aún no hay ventas hoy</div>`;
+  const porHora = {}; for(let h=7;h<=15;h++) porHora[h]=0;
+  hoy.forEach(p=>{ const h=new Date(p.fecha).getHours(); if(h in porHora) porHora[h]++; });
+  const mh = Math.max(1,...Object.values(porHora));
+  $("#horas").innerHTML = Object.entries(porHora).map(([h,v])=>`<div><b style="color:var(--texto)">${v||""}</b><i style="height:${v/mh*85}%"></i>${h}h</div>`).join("");
+}
+
+$("#tablero").addEventListener("click", e=>{
+  const b = e.target.closest("[data-num]"); if(!b) return;
+  const lista = leerPedidos(), p = lista.find(x=>x.num==b.dataset.num);
+  const i = ESTADOS.findIndex(s=>s.id===p.estado); p.estado = ESTADOS[Math.min(i+1,3)].id;
+  guardarPedidos(lista); pintar();
+});
+
+// Pedidos de ejemplo para la demo de clase
+$("#demo").onclick = ()=>{
+  const lista = leerPedidos(); let num = (lista.reduce((m,p)=>Math.max(m,p.num),0)||100);
+  const nombres = ["Lucía","Antonio","Carmen","Paco","Marta","Javi","Rocío","Manolo"];
+  const base = new Date(); base.setHours(7,30,0,0);
+  for(let k=0;k<8;k++){
+    const n = 1+Math.floor(Math.random()*3), lineas=[];
+    for(let j=0;j<n;j++){
+      const p = CARTA[Math.floor(Math.random()*CARTA.length)];
+      const tam = p.tamanos ? Object.keys(p.tamanos)[Math.floor(Math.random()*2)] : null;
+      lineas.push({nombre:p.nombre, tam, precio: tam?p.tamanos[tam]:p.precio, cant:1+Math.floor(Math.random()*2)});
+    }
+    const enMesa = Math.random()<.5, f = new Date(base.getTime()+k*22*60000);
+    lista.push({num:++num, fecha:f.toISOString(), nombre:nombres[k], tel:"", notas: k===2?"Leche sin lactosa":"", modo: enMesa?"mesa":"recoger",
+      destino: enMesa?`Mesa ${1+Math.floor(Math.random()*12)}`:`Recoger · Hoy ${f.getHours()}:${String((f.getMinutes()+15)%60).padStart(2,"0")}`,
+      lineas, total: lineas.reduce((s,l)=>s+l.precio*l.cant,0), estado: ESTADOS[k%4].id});
+  }
+  guardarPedidos(lista); pintar();
+};
+$("#borrar").onclick = ()=>{ if(confirm("¿Vaciar todos los pedidos de la demo?")){ guardarPedidos([]); pintar(); } };
+
+// Pestañas
+document.querySelectorAll(".tabs button").forEach(b=>b.onclick=()=>{
+  document.querySelectorAll(".tabs button").forEach(x=>x.classList.toggle("on",x===b));
+  document.querySelectorAll(".vista").forEach(v=>v.classList.toggle("on",v.id===b.dataset.v));
+});
+
+// QR de mesas
+$("#base").value = location.href.replace(/panel\.html.*$/,"index.html");
+function generarQR(){
+  const base = $("#base").value.trim(), n = +$("#nMesas").value || 12;
+  $("#qrs").innerHTML = "";
+  for(let m=1;m<=n;m++){
+    const d = document.createElement("div"); d.className="qr";
+    d.innerHTML = `<h3>Mesa ${m}</h3><div class="codigo"></div><b>Escanea y pide</b><br><small>Rodri · Cafetería</small>`;
+    $("#qrs").appendChild(d);
+    if (window.QRCode) new QRCode(d.querySelector(".codigo"), {text: base+(base.includes("?")?"&":"?")+"mesa="+m, width:130, height:130, colorDark:"#0c0f0d", colorLight:"#ffffff"});
+    else d.querySelector(".codigo").textContent = "(sin conexión para generar QR)";
+  }
+}
+$("#genQR").onclick = generarQR; generarQR();
+
+// Reloj y actualización en directo (otra pestaña con la web hace pedidos)
+function reloj(){ $("#reloj").textContent = new Date().toLocaleTimeString("es-ES",{hour:"2-digit",minute:"2-digit"}); }
+setInterval(reloj, 10000); reloj();
+window.addEventListener("storage", e=>{ if(e.key===CLAVE_PEDIDOS) pintar(); });
+setInterval(pintar, 5000);
+pintar();
+</script>
+</body>
+</html>

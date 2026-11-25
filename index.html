@@ -1,191 +1,534 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Marchica Shawarma · Kebab halal en Granada</title>
+<meta name="theme-color" content="#0f3d2e">
+<title>Rodri · Cafetería en el Zaidín</title>
+<meta name="description" content="Cafetería Rodri, Zaidín (Granada). Tostadas con jamón cortado a cuchillo, pitufos, molletes y cafés. Carta online y pedidos para recoger.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#f6f0e0;--surface:#fffcf3;--ink:#0a1a33;--muted:#4a5b78;--blue:#0b3f94;--red:#0b3f94;--sky:#1e7bd6;--orange:#f5b800;--yellow:#ffd21f;--green:#2f7d3a;--line:#0a1a33;--ontop:#fff;
-box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0a1424;--surface:#11223b;--ink:#eaf2ff;--muted:#a9bbd6;--line:#ffd21f;--red:#7db4ff;--sky:#5fb0ff}}
-:root[data-theme="dark"]{--bg:#0a1424;--surface:#11223b;--ink:#eaf2ff;--muted:#a9bbd6;--line:#ffd21f;--red:#7db4ff;--sky:#5fb0ff}
-*{box-sizing:border-box}
-html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--ink);font:1.02rem/1.6 "Trebuchet MS",Verdana,sans-serif}
-.d{font-family:Impact,Haettenschweiler,"Arial Narrow Bold","Arial Black",sans-serif;text-transform:uppercase;letter-spacing:.02em;font-weight:400}
-.wrap{max-width:980px;margin:0 auto;padding:0 20px}
-nav{position:sticky;top:0;z-index:5;background:var(--blue);padding:calc(8px + env(safe-area-inset-top,0px)) 0 8px;border-bottom:4px solid var(--yellow)}
-nav .wrap{display:flex;gap:6px 16px;align-items:center;overflow-x:auto;white-space:nowrap}
-nav b{font-size:1.3rem;color:#fff;margin-right:auto}
-nav a{color:#fff;text-decoration:none;font-weight:700;font-size:.85rem;text-transform:uppercase}
-.hero{background:linear-gradient(160deg,#0b3f94,#1565c0 60%,#0b3f94);color:#fff;position:relative;overflow:hidden;padding:48px 0 70px}
-.hero:after{content:"";position:absolute;left:0;right:0;bottom:0;height:22px;background:repeating-conic-gradient(var(--yellow) 0 25%,var(--ink) 0 50%) 0 0/22px 22px}
-.hero .wrap{display:grid;grid-template-columns:1.4fr 1fr;gap:24px;align-items:center}
-@media(max-width:700px){.hero .wrap{grid-template-columns:1fr}.cone{max-width:200px;margin:auto}}
-.sticker{display:inline-block;background:var(--yellow);color:#0a1a33;padding:6px 14px;border-radius:6px;font-weight:800;transform:rotate(-3deg);box-shadow:3px 3px 0 #0a1a33;text-transform:uppercase;font-size:.85rem}
-h1{font-size:clamp(3rem,13vw,6.4rem);line-height:.92;margin:14px 0;text-shadow:4px 4px 0 #0a1a33}
-h1 span{color:var(--yellow)}
-.hero p{font-size:1.15rem;max-width:46ch}
-.btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
-.btn{display:inline-block;padding:13px 22px;border-radius:8px;text-decoration:none;font-weight:800;text-transform:uppercase;border:3px solid #0a1a33;box-shadow:4px 4px 0 #0a1a33;color:#0a1a33;background:var(--yellow)}
-.btn.w{background:#fff}
-.btn:active{transform:translate(3px,3px);box-shadow:1px 1px 0 #0a1a33}
-.cone svg{width:100%;height:auto;animation:spin 6s linear infinite;transform-origin:50% 50%}
-@keyframes spin{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(4deg)}}
-@media(prefers-reduced-motion:reduce){.cone svg{animation:none}}
-.marq{background:var(--yellow);color:#0a1a33;border-block:4px solid #0a1a33;overflow:hidden;white-space:nowrap}
-.marq div{display:inline-block;padding:10px 0;animation:m 28s linear infinite;font-size:1.3rem}
-@keyframes m{to{transform:translateX(-50%)}}
-@media(prefers-reduced-motion:reduce){.marq div{animation:none}}
-section{padding:46px 0}
-h2{font-size:clamp(2rem,6vw,3rem);line-height:1;margin:0 0 20px;color:var(--red)}
-h2:after{content:"";display:block;width:90px;height:8px;background:var(--orange);margin-top:8px;border-radius:4px}
-.alt{background:var(--surface);border-block:3px solid var(--line)}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
-.card{background:var(--surface);border:3px solid var(--line);border-radius:14px;padding:18px;box-shadow:5px 5px 0 var(--line)}
-.alt .card{background:var(--bg)}
-.card h3{margin:0 0 6px;font-size:1.5rem;color:var(--red)}
-.card p{margin:0;color:var(--muted);font-size:.95rem}
-.big{font-size:3rem;line-height:1;color:var(--sky);display:block}
-.emo{font-size:2rem}
-.steps{counter-reset:s;display:grid;gap:14px;padding:0;list-style:none}
-.steps li{counter-increment:s;display:flex;gap:16px;align-items:flex-start;background:var(--surface);border:3px solid var(--line);border-radius:14px;padding:14px 16px}
-.steps li:before{content:counter(s);flex:none;width:46px;height:46px;border-radius:50%;background:var(--blue);color:#fff;display:grid;place-items:center;font:1.6rem Impact,"Arial Black",sans-serif}
-.steps b{display:block}
-.tbl{overflow-x:auto;border:3px solid var(--line);border-radius:14px}
-table{border-collapse:collapse;width:100%;min-width:520px}
-th{background:var(--blue);color:#fff;text-align:left;padding:12px;text-transform:uppercase;font-size:.85rem}
-td{padding:12px;border-top:2px solid var(--line);vertical-align:top;font-size:.95rem}
-.badges{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
-.badge{background:var(--green);color:#fff;padding:5px 12px;border-radius:999px;font-weight:700;font-size:.85rem}
-.badge.o{background:var(--orange);color:#0a1a33}
-.rev{background:var(--surface);border:3px solid var(--line);border-radius:14px;padding:16px;position:relative}
-.rev:before{content:"“";position:absolute;top:-6px;left:12px;font:4rem Impact,serif;color:var(--orange);line-height:1}
-.rev p{margin:18px 0 6px}
-.rev small{color:var(--muted)}
-details{background:var(--surface);border:3px solid var(--line);border-radius:12px;padding:12px 16px;margin-bottom:10px}
-summary{cursor:pointer;font-weight:800}
-details p{margin:8px 0 0;color:var(--muted)}
-.note{background:var(--yellow);color:#0a1a33;border:3px dashed #0a1a33;border-radius:12px;padding:14px 16px;font-weight:600}
-.cta{background:var(--blue);color:#fff;text-align:center;padding:54px 0;border-top:6px solid var(--yellow)}
-.cta h2{color:#fff}.cta h2:after{margin-inline:auto;background:var(--yellow)}
-footer{background:#0a1a33;color:#c9d8f0;padding:26px 0 40px;font-size:.85rem}
-a{color:var(--red)}
+:root{
+  --bg:#f4f4f1; --card:#ffffff; --ink:#111512; --ink-2:#5c645f; --line:#e4e6e1;
+  --verde:#0f3d2e; --verde-2:#1f6b4f; --lima:#c8f169; --tomate:#ff5a36; --oro:#ffb547;
+  --r:28px; --r-s:18px; --sombra:0 1px 2px rgba(17,21,18,.04),0 12px 32px -12px rgba(17,21,18,.12);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:140px}
+body{font-family:"Plus Jakarta Sans",system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5;-webkit-font-smoothing:antialiased;padding-bottom:100px}
+h1,h2,h3{letter-spacing:-.035em;line-height:1}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+.wrap{max-width:1200px;margin:0 auto;padding:0 16px}
+@media (min-width:720px){.wrap{padding:0 28px}}
+
+/* ---------- NAV ---------- */
+nav{position:sticky;top:12px;z-index:30;margin:12px auto 0;max-width:1200px;padding:0 16px}
+.barra-nav{display:flex;align-items:center;gap:20px;height:60px;padding:0 10px 0 20px;border-radius:999px;
+  background:rgba(255,255,255,.72);backdrop-filter:saturate(1.6) blur(18px);-webkit-backdrop-filter:saturate(1.6) blur(18px);
+  border:1px solid rgba(255,255,255,.8);box-shadow:var(--sombra)}
+.logo{font-weight:800;font-size:22px;letter-spacing:-.04em;display:flex;align-items:center;gap:8px}
+.logo i{width:26px;height:26px;border-radius:9px;background:var(--verde);display:grid;place-items:center;color:var(--lima);font-style:normal;font-size:15px}
+.links{display:flex;gap:4px;margin-left:auto;font-weight:600;font-size:14px}
+.links a{padding:8px 14px;border-radius:999px;color:var(--ink-2)}
+.links a:hover{background:var(--bg);color:var(--ink)}
+.btn-carro{display:flex;align-items:center;gap:10px;background:var(--ink);color:#fff;padding:10px 12px 10px 18px;border-radius:999px;font-weight:700;font-size:14px}
+.btn-carro b{background:var(--lima);color:var(--ink);border-radius:999px;min-width:24px;height:24px;display:grid;place-items:center;font-size:12px;padding:0 6px}
+@media (max-width:760px){.links{display:none}.btn-carro{margin-left:auto}}
+
+/* ---------- HERO BENTO ---------- */
+.hero{padding:28px 0 10px}
+.bento{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:minmax(120px,auto);gap:14px}
+.tile{background:var(--card);border-radius:var(--r);padding:28px;box-shadow:var(--sombra);position:relative;overflow:hidden}
+.t-main{grid-column:span 7;grid-row:span 3;background:var(--verde);color:#fff;display:flex;flex-direction:column;justify-content:space-between;padding:40px}
+.t-main::after{content:"";position:absolute;width:520px;height:520px;right:-180px;top:-160px;border-radius:50%;background:radial-gradient(closest-side,rgba(200,241,105,.35),transparent)}
+.estado{display:inline-flex;align-items:center;gap:8px;padding:7px 14px;border-radius:999px;background:rgba(200,241,105,.16);color:var(--lima);font-weight:700;font-size:13px;width:max-content;position:relative;z-index:1}
+.estado i{width:8px;height:8px;border-radius:50%;background:currentColor;box-shadow:0 0 0 0 currentColor;animation:pulso 2s infinite}
+.estado.cerrado{background:rgba(255,90,54,.18);color:#ffb3a3}
+.estado.cerrado i{animation:none}
+@keyframes pulso{0%{box-shadow:0 0 0 0 rgba(200,241,105,.6)}70%{box-shadow:0 0 0 10px rgba(200,241,105,0)}100%{box-shadow:0 0 0 0 rgba(200,241,105,0)}}
+.t-main h1{font-size:clamp(48px,7.4vw,104px);font-weight:800;margin:28px 0 20px;position:relative;z-index:1}
+.t-main h1 span{color:var(--lima)}
+.t-main p{font-size:18px;max-width:480px;color:rgba(255,255,255,.78);position:relative;z-index:1}
+.cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:30px;position:relative;z-index:1}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:15px 24px;border-radius:999px;font-weight:700;font-size:15px;transition:transform .15s}
+.btn:active{transform:scale(.97)}
+.btn.lima{background:var(--lima);color:var(--ink)}
+.btn.vidrio{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.2)}
+.btn.negro{background:var(--ink);color:#fff}
+.btn.borde{border:1.5px solid var(--line);background:#fff}
+
+.t-nota{grid-column:span 5;grid-row:span 2;display:flex;flex-direction:column;justify-content:space-between;background:var(--lima)}
+.t-nota .grande{font-size:120px;font-weight:800;letter-spacing:-.06em;line-height:.9}
+.t-nota .estrellas{font-size:22px;letter-spacing:2px;margin:18px 0 6px}
+.t-nota small{font-weight:600;color:rgba(17,21,18,.65)}
+.mini-barras{display:flex;gap:6px;align-items:end;height:70px;position:absolute;right:28px;bottom:28px}
+.mini-barras i{width:16px;border-radius:6px;background:rgba(17,21,18,.85)}
+.t-dato{grid-column:span 5;display:flex;align-items:center;gap:18px}
+.t-dato .ic{width:56px;height:56px;border-radius:18px;background:var(--bg);display:grid;place-items:center;flex:none}
+.t-dato .ic svg{width:28px;height:28px}
+.t-dato b{display:block;font-size:20px;letter-spacing:-.02em}
+.t-dato span{color:var(--ink-2);font-size:14px}
+@media (max-width:900px){.t-main,.t-nota,.t-dato{grid-column:1/-1}.t-main{padding:30px}.t-nota .grande{font-size:96px}}
+
+/* ---------- SECCIONES ---------- */
+section{padding:80px 0 20px}
+.cab{display:flex;align-items:end;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:24px}
+.cab h2{font-size:clamp(38px,5.4vw,64px);font-weight:800}
+.cab p{color:var(--ink-2);max-width:400px}
+.kicker{display:inline-block;font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--verde-2);margin-bottom:12px}
+
+/* ---------- CARTA ---------- */
+.mesa-aviso{display:none;align-items:center;gap:12px;background:var(--ink);color:#fff;padding:14px 20px;border-radius:var(--r-s);margin-bottom:20px;font-weight:600}
+.mesa-aviso b{background:var(--lima);color:var(--ink);border-radius:10px;padding:4px 10px}
+.herramientas{position:sticky;top:84px;z-index:20;display:flex;gap:10px;align-items:center;padding:10px;margin:0 -10px 20px;border-radius:999px;
+  background:rgba(244,244,241,.8);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.chips{display:flex;gap:6px;overflow-x:auto;flex:1;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{white-space:nowrap;padding:10px 18px;border-radius:999px;font-weight:700;font-size:14px;background:#fff;color:var(--ink-2);border:1px solid var(--line);transition:.2s}
+.chip.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.buscar{position:relative}
+.buscar input{padding:11px 16px 11px 40px;border-radius:999px;border:1px solid var(--line);background:#fff;font:inherit;font-size:14px;width:220px;color:var(--ink);outline:none}
+.buscar input:focus{border-color:var(--verde-2);box-shadow:0 0 0 4px rgba(31,107,79,.12)}
+.buscar svg{position:absolute;left:14px;top:50%;transform:translateY(-50%);width:16px;height:16px;color:var(--ink-2)}
+@media (max-width:640px){.herramientas{flex-direction:column;align-items:stretch;border-radius:22px}.buscar input{width:100%}}
+
+.grupo{margin-bottom:38px}
+.grupo h3{font-size:22px;font-weight:800;margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.grupo h3 small{font-size:13px;color:var(--ink-2);font-weight:600;letter-spacing:0}
+.platos{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}
+.plato{background:var(--card);border-radius:24px;padding:14px;display:flex;gap:14px;box-shadow:var(--sombra);transition:transform .2s,box-shadow .2s;border:1px solid transparent}
+.plato:hover{transform:translateY(-2px);box-shadow:0 1px 2px rgba(17,21,18,.04),0 20px 40px -16px rgba(17,21,18,.2)}
+.plato.en-carro{border-color:var(--verde-2)}
+.foto{width:92px;height:92px;border-radius:18px;flex:none;display:grid;place-items:center;position:relative}
+.foto svg{width:58px;height:58px}
+.foto .fav{position:absolute;top:-6px;left:-6px;background:var(--oro);color:var(--ink);font-size:10px;font-weight:800;padding:3px 7px;border-radius:999px;letter-spacing:.04em}
+.info{flex:1;display:flex;flex-direction:column;min-width:0}
+.info h4{font-size:16px;font-weight:700;letter-spacing:-.01em}
+.info p{font-size:13px;color:var(--ink-2);margin-top:2px;line-height:1.4}
+.pie{display:flex;align-items:center;gap:8px;margin-top:auto;padding-top:10px;flex-wrap:wrap}
+.precio{font-weight:800;font-size:17px;letter-spacing:-.02em;margin-right:auto}
+.tam{display:flex;background:var(--bg);border-radius:999px;padding:3px}
+.tam button{padding:5px 10px;border-radius:999px;font-size:12px;font-weight:700;color:var(--ink-2)}
+.tam button.on{background:#fff;color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.1)}
+.anadir{height:36px;padding:0 14px;border-radius:999px;background:var(--ink);color:#fff;font-weight:700;font-size:13px;display:flex;align-items:center;gap:6px;transition:transform .15s}
+.anadir:active{transform:scale(.92)}
+.stepper{display:flex;align-items:center;gap:4px;background:var(--verde);color:#fff;border-radius:999px;padding:3px}
+.stepper button{width:30px;height:30px;border-radius:50%;font-weight:800;font-size:16px}
+.stepper button:hover{background:rgba(255,255,255,.15)}
+.stepper b{min-width:18px;text-align:center;font-size:14px}
+.nota-precios{font-size:13px;color:var(--ink-2);display:flex;gap:10px;align-items:center;background:#fff;border-radius:16px;padding:12px 16px;border:1px dashed var(--line)}
+.vacio{color:var(--ink-2);text-align:center;padding:50px 0}
+
+/* ---------- OPINIONES ---------- */
+.bento-op{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}
+.op-nota{grid-column:span 4;grid-row:span 2;background:var(--ink);color:#fff}
+.op-nota .grande{font-size:110px;font-weight:800;letter-spacing:-.06em;line-height:1}
+.barras{margin-top:24px}
+.barras div{display:grid;grid-template-columns:22px 1fr 34px;gap:10px;align-items:center;font-size:13px;margin:8px 0;color:rgba(255,255,255,.7)}
+.barras .b{height:8px;background:rgba(255,255,255,.1);border-radius:99px;overflow:hidden}
+.barras .b i{display:block;height:100%;background:var(--lima);border-radius:99px}
+.cita{grid-column:span 4;display:flex;flex-direction:column;justify-content:space-between;gap:20px}
+.cita q{font-size:20px;font-weight:600;letter-spacing:-.02em;line-height:1.3;quotes:"“" "”"}
+.cita small{color:var(--ink-2);font-size:13px;display:flex;align-items:center;gap:8px}
+.cita small i{width:28px;height:28px;border-radius:50%;background:var(--bg);display:grid;place-items:center;font-style:normal;font-weight:800;font-size:12px}
+.palabras{grid-column:span 8;display:flex;flex-wrap:wrap;gap:8px;align-content:center}
+.palabras span{background:var(--bg);padding:8px 14px;border-radius:999px;font-size:14px;font-weight:600}
+.palabras span b{color:var(--verde-2)}
+@media (max-width:900px){.op-nota,.cita,.palabras{grid-column:1/-1}}
+
+/* ---------- INFO ---------- */
+.bento-info{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}
+.i-horario{grid-column:span 4}
+.i-contacto{grid-column:span 3;display:flex;flex-direction:column;gap:14px}
+.i-mapa{grid-column:span 5;padding:0;min-height:340px}
+.i-mapa iframe{width:100%;height:100%;min-height:340px;border:0;display:block;filter:grayscale(.3) contrast(1.05)}
+.tile h3{font-size:20px;font-weight:800;margin-bottom:14px}
+.horario div{display:flex;justify-content:space-between;padding:9px 12px;border-radius:12px;font-size:14px}
+.horario div.hoy{background:var(--lima);font-weight:800}
+.horario div span:last-child{color:var(--ink-2)}.horario div.hoy span:last-child{color:var(--ink)}
+.i-contacto p{color:var(--ink-2);font-size:15px}
+.i-contacto .tel{font-size:24px;font-weight:800;letter-spacing:-.02em;color:var(--ink)}
+.fidel{grid-column:1/-1;background:linear-gradient(120deg,var(--verde),#164f3b);color:#fff;display:flex;align-items:center;gap:30px;flex-wrap:wrap}
+.fidel h3{font-size:32px;margin:0}
+.fidel p{color:rgba(255,255,255,.7)}
+.sellos{display:flex;gap:8px;margin-left:auto;flex-wrap:wrap}
+.sellos i{width:36px;height:36px;border-radius:50%;border:2px dashed rgba(255,255,255,.35);display:grid;place-items:center;font-style:normal;font-size:16px}
+.sellos i.ok{background:var(--lima);border:0}
+.sellos i.premio{background:var(--oro);border:0}
+@media (max-width:900px){.i-horario,.i-contacto,.i-mapa{grid-column:1/-1}.sellos{margin-left:0}}
+
+footer{padding:50px 0 20px;font-size:13px;color:var(--ink-2)}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:24px}
+footer a{font-weight:700;color:var(--ink)}
+
+/* ---------- BARRA FLOTANTE ---------- */
+.flotante{position:fixed;left:50%;bottom:max(16px,env(safe-area-inset-bottom));transform:translate(-50%,140%);z-index:35;width:min(520px,calc(100% - 32px));
+  display:flex;align-items:center;gap:14px;background:var(--ink);color:#fff;padding:10px 10px 10px 22px;border-radius:999px;box-shadow:0 20px 50px -10px rgba(0,0,0,.45);transition:transform .45s cubic-bezier(.2,.9,.2,1)}
+.flotante.on{transform:translate(-50%,0)}
+.flotante .t{flex:1;font-size:14px;color:rgba(255,255,255,.7)}
+.flotante .t b{color:#fff;font-size:17px;display:block;letter-spacing:-.02em}
+.flotante .btn{padding:12px 20px}
+
+/* ---------- PANEL PEDIDO ---------- */
+.velo{position:fixed;inset:0;background:rgba(17,21,18,.4);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);opacity:0;pointer-events:none;transition:.3s;z-index:40}
+.velo.on{opacity:1;pointer-events:auto}
+.cajon{position:fixed;z-index:50;background:#fff;display:flex;flex-direction:column;transition:transform .45s cubic-bezier(.2,.9,.2,1);
+  top:12px;right:12px;bottom:12px;width:min(440px,calc(100% - 24px));border-radius:var(--r);transform:translateX(calc(100% + 24px));box-shadow:0 30px 80px -20px rgba(0,0,0,.4)}
+.cajon.on{transform:none}
+@media (max-width:640px){.cajon{top:auto;left:0;right:0;bottom:0;width:100%;max-height:92vh;border-radius:28px 28px 0 0;transform:translateY(100%)}}
+.cajon header{display:flex;justify-content:space-between;align-items:center;padding:22px 24px 14px}
+.cajon header h3{font-size:26px;font-weight:800}
+.cerrar{width:38px;height:38px;border-radius:50%;background:var(--bg);font-size:20px}
+.cuerpo{flex:1;overflow:auto;padding:4px 24px 20px}
+.linea{display:flex;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line)}
+.linea .mini{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;flex:none}
+.linea .mini svg{width:22px;height:22px}
+.linea .n{flex:1;font-size:14px}.linea .n small{display:block;color:var(--ink-2)}
+.linea .stepper{background:var(--bg);color:var(--ink)}
+.linea .stepper button:hover{background:#fff}
+.form label{display:block;font-size:13px;font-weight:700;margin:16px 0 6px}
+.form input,.form select,.form textarea{width:100%;padding:13px 16px;border-radius:14px;border:1px solid var(--line);background:var(--bg);font:inherit;font-size:15px;color:var(--ink);outline:none}
+.form input:focus,.form select:focus,.form textarea:focus{border-color:var(--verde-2);background:#fff;box-shadow:0 0 0 4px rgba(31,107,79,.12)}
+.modo{display:grid;grid-template-columns:1fr 1fr;gap:4px;background:var(--bg);border-radius:16px;padding:4px}
+.modo button{padding:11px;border-radius:12px;font-weight:700;font-size:14px;color:var(--ink-2)}
+.modo button.on{background:#fff;color:var(--ink);box-shadow:0 1px 4px rgba(0,0,0,.1)}
+.cajon footer{border-top:1px solid var(--line);padding:18px 24px 22px;color:inherit;font-size:inherit}
+.total{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:14px}
+.total span:first-child{color:var(--ink-2);font-weight:600}
+.total span:last-child{font-size:28px;font-weight:800;letter-spacing:-.03em}
+.pedir{width:100%;padding:17px;border-radius:999px;background:var(--verde);color:#fff;font-weight:800;font-size:16px}
+.pedir:disabled{opacity:.35;cursor:not-allowed}
+.ok{text-align:center;padding:30px 0}
+.ok .check{width:84px;height:84px;border-radius:50%;background:var(--lima);display:grid;place-items:center;margin:0 auto 18px;animation:pop .5s cubic-bezier(.3,1.6,.5,1)}
+@keyframes pop{from{transform:scale(0)}to{transform:scale(1)}}
+.ok .num{font-size:64px;font-weight:800;letter-spacing:-.05em}
+.ok .btn{width:100%;margin-top:10px}
+.wa{background:#25d366;color:#fff}
+
+.toast{position:fixed;left:50%;top:84px;transform:translate(-50%,-30px);opacity:0;background:var(--ink);color:#fff;padding:11px 18px;border-radius:999px;font-weight:700;z-index:60;transition:.3s;font-size:14px;pointer-events:none}
+.toast.on{transform:translate(-50%,0);opacity:1}
+
+/* aparición al hacer scroll */
+.aparece{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.8,.2,1)}
+.aparece.visto{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.aparece{opacity:1;transform:none}}
 </style>
 </head>
 <body>
 
-<nav><div class="wrap"><b class="d">Marchica</b><a href="#carta">Carta</a><a href="#guia">Guía</a><a href="#locales">Locales</a><a href="#opiniones">Opiniones</a><a href="#faq">FAQ</a></div></nav>
+<nav>
+  <div class="barra-nav">
+    <a class="logo" href="#"><i>R</i>Rodri</a>
+    <div class="links">
+      <a href="#carta">Carta</a>
+      <a href="#opiniones">Opiniones</a>
+      <a href="#info">Visítanos</a>
+    </div>
+    <button class="btn-carro" id="abrirCarro" aria-label="Abrir pedido">Pedido <b id="contador">0</b></button>
+  </div>
+</nav>
 
-<header class="hero"><div class="wrap">
-  <div>
-    <span class="sticker">Halal · Granada</span>
-    <h1 class="d">Marchica <span>Shawarma</span></h1>
-    <p>Carne jugosa, salsa con fama propia y precios de estudiante. El kebab que se recomienda de boca en boca por todo Granada.</p>
-    <div class="btns">
-      <a class="btn" href="https://maps.app.goo.gl/yMqHaS7MZAc7jiHS7" target="_blank" rel="noopener">📍 Cómo llegar</a>
-      <a class="btn w" href="#carta">🌯 Ver carta</a>
+<header class="hero">
+  <div class="wrap">
+    <div class="bento">
+      <div class="tile t-main aparece">
+        <div class="estado" id="estado"><i></i><span>Comprobando horario…</span></div>
+        <div>
+          <h1>El desayuno<br>del <span>Zaidín.</span></h1>
+          <p>Tostadas con jamón cortado a cuchillo, pitufos, molletes y el cortado de siempre. Pide desde el móvil y recógelo sin esperar.</p>
+          <div class="cta">
+            <a class="btn lima" href="#carta">Ver carta y pedir →</a>
+            <a class="btn vidrio" href="#info">Cómo llegar</a>
+          </div>
+        </div>
+      </div>
+      <div class="tile t-nota aparece">
+        <div>
+          <small>Valoración en Google</small>
+          <div class="grande">4,7</div>
+          <div class="estrellas">★★★★★</div>
+          <small>400 reseñas</small>
+        </div>
+        <div class="mini-barras" id="miniBarras"></div>
+      </div>
+      <div class="tile t-dato aparece">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#0f3d2e" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+        <div><b id="horaHoy">Desde las 7:00</b><span>Lunes a sábado</span></div>
+      </div>
     </div>
   </div>
-  <div class="cone" aria-hidden="true">
-    <svg viewBox="0 0 200 260"><rect x="96" y="6" width="8" height="248" rx="4" fill="#0a1a33"/><path d="M60 40h80l22 190H38z" fill="#b5532a" stroke="#0a1a33" stroke-width="6" stroke-linejoin="round"/><path d="M52 90h96M46 140h108M42 190h116" stroke="#f5b800" stroke-width="10" stroke-linecap="round"/><path d="M70 60l8 170M100 44v186M130 60l-8 170" stroke="#7a2a12" stroke-width="4" opacity=".6"/><ellipse cx="100" cy="40" rx="42" ry="9" fill="#ffd21f" stroke="#0a1a33" stroke-width="5"/></svg>
+</header>
+
+<section id="carta">
+  <div class="wrap">
+    <div class="mesa-aviso" id="mesaAviso"></div>
+    <div class="cab aparece">
+      <div><span class="kicker">Carta</span><h2>Lo de siempre,<br>ahora en tu móvil.</h2></div>
+      <p>Elige pitufo, media o entera. Añade al pedido y recógelo en barra a la hora que quieras.</p>
+    </div>
+    <div class="herramientas">
+      <div class="chips" id="chips"></div>
+      <label class="buscar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+        <input id="buscar" type="search" placeholder="Buscar…" aria-label="Buscar en la carta"></label>
+    </div>
+    <div id="listaCarta"></div>
+    <p class="nota-precios">ⓘ Precios orientativos para el proyecto de clase, pendientes de confirmar con el negocio.</p>
   </div>
-</div></header>
+</section>
 
-<div class="marq" aria-hidden="true"><div class="d">
-  Shawarma ✦ Durum ✦ Falafel ✦ Halal ✦ Para llevar ✦ Calle Elvira ✦ Salsa de la casa ✦ Precios de estudiante ✦ Shawarma ✦ Durum ✦ Falafel ✦ Halal ✦ Para llevar ✦ Calle Elvira ✦ Salsa de la casa ✦ Precios de estudiante ✦
-</div></div>
-
-<section><div class="wrap">
-  <h2 class="d">De un vistazo</h2>
-  <div class="grid">
-    <div class="card"><span class="big d">4,4★</span><p>Media en más de 1.400 opiniones de la sede de la calle Elvira.</p></div>
-    <div class="card"><span class="big d">1–10€</span><p>Precio medio por persona según directorios locales.</p></div>
-    <div class="card"><span class="big d">8,0</span><p>Nota en Gastroranking, con casi 1.600 opiniones.</p></div>
-    <div class="card"><span class="big d">3 locales</span><p>Con la ubicación de tu enlace, tres puntos de Marchica en el área de Granada.</p></div>
+<section id="opiniones">
+  <div class="wrap">
+    <div class="cab aparece"><div><span class="kicker">Opiniones</span><h2>Lo dice el barrio.</h2></div></div>
+    <div class="bento-op">
+      <div class="tile op-nota aparece">
+        <div class="grande">4,7</div>
+        <div style="color:rgba(255,255,255,.6);font-size:14px">400 reseñas en Google</div>
+        <div class="barras" id="barras"></div>
+      </div>
+      <div class="tile cita aparece"><q>De las mejores cafeterías del Zaidín.</q><small><i>G</i>Reseña de Google</small></div>
+      <div class="tile cita aparece"><q>Los pitufos están buenísimos, sobre todo el de jamón recién cortado a cuchillo.</q><small><i>G</i>Reseña de Google</small></div>
+      <div class="tile palabras aparece" aria-label="Palabras más mencionadas en las reseñas">
+        <span>tostadas <b>43</b></span><span>jamón <b>28</b></span><span>tapas <b>12</b></span><span>mollete <b>10</b></span><span>rapidez <b>8</b></span><span>cortado <b>8</b></span><span>cerveza <b>5</b></span><span>pitufo <b>4</b></span>
+      </div>
+    </div>
   </div>
-  <div class="badges"><span class="badge">Halal</span><span class="badge">Opciones vegetarianas</span><span class="badge o">Para llevar</span><span class="badge o">Económico</span><span class="badge o">Servicio rápido</span></div>
-</div></section>
+</section>
 
-<section class="alt" id="carta"><div class="wrap">
-  <h2 class="d">La carta</h2>
-  <div class="grid">
-    <div class="card"><span class="emo">🌯</span><h3 class="d">Durum</h3><p>Wrap fino y bien relleno de carne, verduras y salsa. Uno de los platos más citados por los clientes.</p></div>
-    <div class="card"><span class="emo">🧀</span><h3 class="d">Completo</h3><p>La versión con queso y huevo. Según una guía de comida barata, ronda los 3 a 5 euros.</p></div>
-    <div class="card"><span class="emo">🥙</span><h3 class="d">Shawarma</h3><p>Carne cortada del asador en pan de pita, con las salsas de la casa.</p></div>
-    <div class="card"><span class="emo">🧆</span><h3 class="d">Falafel</h3><p>La opción vegetariana para llevar, en el mismo rango de precio.</p></div>
-    <div class="card"><span class="emo">🍟</span><h3 class="d">Patatas</h3><p>Los clientes mencionan las patatas como acompañamiento habitual del kebab.</p></div>
-    <div class="card"><span class="emo">🌶️</span><h3 class="d">Picante</h3><p>Las reseñas hablan de salsas picantes: pregunta cuál se adapta a tu aguante.</p></div>
+<section id="info">
+  <div class="wrap">
+    <div class="cab aparece"><div><span class="kicker">Visítanos</span><h2>Algo escondida.<br>Fácil de encontrar.</h2></div>
+      <p>En C. Reina Mora, en pleno Zaidín. Terraza amplia, salón luminoso y acceso para sillas de ruedas.</p></div>
+    <div class="bento-info">
+      <div class="tile i-horario aparece"><h3>Horario</h3><div class="horario" id="horario"></div></div>
+      <div class="tile i-contacto aparece">
+        <h3 style="margin:0">Contacto</h3>
+        <p>C. Reina Mora<br>18008 Granada</p>
+        <a class="tel" href="tel:+34652915703">652 91 57 03</a>
+        <a class="btn negro" href="https://maps.app.goo.gl/N6wUgZ7h8tAcmJG47" target="_blank" rel="noopener" style="margin-top:auto">Abrir en Maps ↗</a>
+      </div>
+      <div class="tile i-mapa aparece"><iframe title="Mapa de Cafetería Rodri" loading="lazy" src="https://maps.google.com/maps?q=37.1617637,-3.593173&z=17&output=embed"></iframe></div>
+      <div class="tile fidel aparece">
+        <div><h3>Tarjeta Rodri</h3><p>10 cafés = 1 desayuno gratis</p></div>
+        <div class="sellos"><i class="ok"></i><i class="ok"></i><i class="ok"></i><i class="ok"></i><i></i><i></i><i></i><i></i><i></i><i class="premio">☕</i></div>
+      </div>
+    </div>
   </div>
-  <p class="note" style="margin-top:18px">La carta completa con precios exactos está pendiente: no la he encontrado publicada. Los importes son orientativos.</p>
-</div></section>
+</section>
 
-<section id="guia"><div class="wrap">
-  <h2 class="d">Guía del buen kebab</h2>
-  <div class="grid" style="margin-bottom:26px">
-    <div class="card"><h3 class="d">Shawarma</h3><p>Carne marinada que se asa en vertical y se corta en lonchas finas. Es el nombre habitual en Oriente Medio.</p></div>
-    <div class="card"><h3 class="d">Döner</h3><p>Primo turco del shawarma. En España «kebab» suele significar justo esto, en pan o en plato.</p></div>
-    <div class="card"><h3 class="d">Durum</h3><p>Es el formato: la carne va enrollada en una torta de trigo fina, como un wrap.</p></div>
+<footer>
+  <div class="wrap">
+    <span>© Rodri · Cafetería · Zaidín, Granada</span>
+    <span>Proyecto de digitalización (clase) · <a href="panel.html">Panel del bar →</a></span>
   </div>
-  <h3 class="d" style="font-size:1.8rem;margin:0 0 12px">Cómo pedir como un local</h3>
-  <ol class="steps">
-    <li><div><b>Elige el formato</b>Durum para llevártelo en la mano, pita si prefieres más pan, o falafel si vas sin carne.</div></li>
-    <li><div><b>Elige la carne</b>Pregunta qué hay hoy en el asador; la oferta puede variar según el local.</div></li>
-    <li><div><b>Prueba la salsa de la casa</b>Varias reseñas la destacan como lo mejor del sitio. Pídela en cantidad razonable la primera vez.</div></li>
-    <li><div><b>Decide el picante</b>Dilo al pedir, que luego no hay vuelta atrás.</div></li>
-    <li><div><b>Evita la hora punta</b>Hay quien cuenta que tuvo que esperar por la cola. Fuera de las horas de comida y cena se va más ligero.</div></li>
-  </ol>
-  <h3 class="d" style="font-size:1.8rem;margin:26px 0 12px">Alergias y dieta</h3>
-  <p>El pan o la torta contienen gluten y las salsas y el queso pueden llevar lácteos; el «completo» lleva huevo. Si tienes alguna alergia, dilo al pedir. En directorios locales aparece como halal; si es importante para ti, confírmalo directamente en el local.</p>
-</div></section>
+</footer>
 
-<section class="alt" id="locales"><div class="wrap">
-  <h2 class="d">Dónde encontrarnos</h2>
-  <div class="tbl"><table>
-    <tr><th>Local</th><th>Dirección</th><th>Notas</th></tr>
-    <tr><td><b>Marchica Shawarma</b></td><td>C/ Elvira, 72 · 18010 Granada (Albaicín)</td><td>Mostrador para llevar, sin mesas. Calle famosa por sus kebabs.</td></tr>
-    <tr><td><b>Shawarma Marchica II</b></td><td>C/ Pedro Antonio de Alarcón, 54 · 18002 Granada</td><td>Cerca de la zona de Camino de Ronda. Media de 4,5 en unas 610 opiniones.</td></tr>
-    <tr><td><b>Marchica (ubicación de Maps)</b></td><td>Zona sur de Granada / Armilla</td><td><a href="https://maps.app.goo.gl/yMqHaS7MZAc7jiHS7" target="_blank" rel="noopener">Abrir en Google Maps</a></td></tr>
-  </table></div>
-  <p class="note" style="margin-top:18px">Horario y teléfono: pendientes de confirmar. Mira la ficha de Google Maps antes de ir, porque pueden cambiar según el local y la temporada.</p>
-  <h3 class="d" style="font-size:1.8rem;margin:26px 0 8px">Plan completo en el Albaicín</h3>
-  <p>La calle Elvira concentra varios de los kebabs más comentados de Granada. Una idea clásica: kebab para llevar y, de postre, una de las teterías de la zona.</p>
-</div></section>
+<div class="flotante" id="flotante">
+  <div class="t"><span id="fCant">0 productos</span><b id="fTotal">0,00 €</b></div>
+  <button class="btn lima" id="fAbrir">Ver pedido →</button>
+</div>
 
-<section id="opiniones"><div class="wrap">
-  <h2 class="d">Lo que dice la gente</h2>
-  <div class="grid">
-    <div class="rev"><p>Clientes lo describen como el mejor kebab de Granada y destacan que no resulta pesado después.</p><small>Gastroranking</small></div>
-    <div class="rev"><p>Reseñas de Google valoran la carne jugosa y el servicio rápido, con elogios al trato amable del equipo.</p><small>Google · 2025–2026</small></div>
-    <div class="rev"><p>Una opinión señala que su salsa es de las mejores de la ciudad.</p><small>Google · octubre 2025</small></div>
-    <div class="rev"><p>Algunos clientes mencionan la cola como prueba de su popularidad, y otros lo recomiendan como opción halal económica.</p><small>Gastroranking</small></div>
-  </div>
-  <div class="tbl" style="margin-top:22px"><table>
-    <tr><th>Fuente</th><th>Local</th><th>Valoración</th></tr>
-    <tr><td>Directorio Intravel</td><td>Elvira, 72</td><td>4,4 · 1.475 opiniones</td></tr>
-    <tr><td>Gastroranking</td><td>Marchica Shawarma</td><td>8,0 · 1.598 opiniones</td></tr>
-    <tr><td>Guía de comida barata</td><td>Calle Elvira</td><td>4,2</td></tr>
-    <tr><td>Directorio Intravel</td><td>Marchica II</td><td>4,5 · 610 opiniones</td></tr>
-  </table></div>
-</div></section>
+<div class="velo" id="velo"></div>
+<aside class="cajon" id="cajon" aria-label="Tu pedido">
+  <header><h3 id="cajonTitulo">Tu pedido</h3><button class="cerrar" id="cerrarCarro" aria-label="Cerrar">×</button></header>
+  <div class="cuerpo" id="cuerpo"></div>
+  <footer id="cajonPie">
+    <div class="total"><span>Total</span><span id="total">0,00 €</span></div>
+    <button class="pedir" id="pedir" disabled>Confirmar pedido</button>
+  </footer>
+</aside>
 
-<section class="alt" id="faq"><div class="wrap">
-  <h2 class="d">Preguntas frecuentes</h2>
-  <details><summary>¿Es halal?</summary><p>Los directorios locales y las guías lo incluyen entre los restaurantes halal de Granada. Si necesitas certeza, pregunta en el local.</p></details>
-  <details><summary>¿Hay opciones vegetarianas?</summary><p>Sí: el falafel y los platos con queso aparecen en las reseñas. Pide sin carne y confirma los ingredientes.</p></details>
-  <details><summary>¿Hay mesas para comer allí?</summary><p>Según una guía, la sede de la calle Elvira es un mostrador para llevar sin asientos. El resto de locales puede variar.</p></details>
-  <details><summary>¿Cuánto cuesta?</summary><p>Los directorios sitúan el gasto medio entre 1 y 10 euros por persona, con wraps de 3 a 5 euros en Elvira.</p></details>
-  <details><summary>¿Hacen reparto a domicilio?</summary><p>Marchica II aparece en plataformas de recogida y reparto, pero con disponibilidad variable. Revisa la app que uses.</p></details>
-  <details><summary>¿Aceptan tarjeta?</summary><p>No he encontrado este dato. Lleva algo de efectivo por si acaso.</p></details>
-</div></section>
+<div class="toast" id="toast" role="status"></div>
 
-<section class="cta"><div class="wrap">
-  <h2 class="d">¿Hambre?</h2>
-  <p>Abre el mapa y ven a probar el durum del que habla media Granada.</p>
-  <div class="btns" style="justify-content:center"><a class="btn" href="https://maps.app.goo.gl/yMqHaS7MZAc7jiHS7" target="_blank" rel="noopener">📍 Abrir en Google Maps</a></div>
-</div></section>
+<script src="datos.js"></script>
+<script>
+const $ = s => document.querySelector(s);
+const params = new URLSearchParams(location.search);
+const mesa = params.get("mesa");
+let carro = [];
+let categoria = "todas";
+let modo = mesa ? "mesa" : "recoger";
 
-<footer><div class="wrap">Información recopilada de fuentes públicas (Google Maps, Gastroranking, Intravel, Salir.com y guías locales). Horarios, precios y carta pueden haber cambiado: confirma siempre con el local.</div></footer>
+// Icono y color por categoría (las "fotos" de la carta)
+const ICONOS = {
+  tostadas: ["#ffe3d6", '<svg viewBox="0 0 48 48"><path d="M8 20a10 10 0 0110-10h12a10 10 0 0110 10 4 4 0 01-3 3.9V38a2 2 0 01-2 2H13a2 2 0 01-2-2V23.9A4 4 0 018 20z" fill="#e8a25c"/><path d="M14 22h20v14H14z" fill="#ff5a36"/><path d="M15 26c4-3 8 3 12 0s5-2 6 0" stroke="#ffc2b3" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg>'],
+  pitufos: ["#fff0cf", '<svg viewBox="0 0 48 48"><ellipse cx="24" cy="27" rx="17" ry="11" fill="#e8a25c"/><path d="M11 24c3-7 23-7 26 0" stroke="#c97f3a" stroke-width="2.5" fill="none" stroke-linecap="round"/><path d="M16 22l3-4M23 21l2-5M30 22l3-4" stroke="#fff3df" stroke-width="2.5" stroke-linecap="round"/></svg>'],
+  combos: ["#e3f5d0", '<svg viewBox="0 0 48 48"><rect x="6" y="30" width="36" height="6" rx="3" fill="#0f3d2e"/><path d="M12 18h12v8a6 6 0 01-12 0z" fill="#fff" stroke="#0f3d2e" stroke-width="2.5"/><rect x="28" y="14" width="9" height="16" rx="2" fill="#ffb547"/><path d="M24 20a3 3 0 010 6" stroke="#0f3d2e" stroke-width="2.5" fill="none"/></svg>'],
+  cafes: ["#efe6dd", '<svg viewBox="0 0 48 48"><path d="M10 18h24v10a12 12 0 01-24 0z" fill="#fff" stroke="#3b2416" stroke-width="2.5"/><path d="M34 21a5 5 0 010 10" stroke="#3b2416" stroke-width="2.5" fill="none"/><ellipse cx="22" cy="18" rx="12" ry="3" fill="#6b4226"/><path d="M18 6c-2 3 2 5 0 8M25 6c-2 3 2 5 0 8" stroke="#a88a74" stroke-width="2" fill="none" stroke-linecap="round"/></svg>'],
+  bolleria: ["#fde9c4", '<svg viewBox="0 0 48 48"><path d="M6 30c4-12 32-12 36 0-6 4-30 4-36 0z" fill="#e8a25c"/><path d="M14 22l4 10M24 19v13M34 22l-4 10" stroke="#c97f3a" stroke-width="2.5" stroke-linecap="round"/></svg>'],
+  canas: ["#fff4c2", '<svg viewBox="0 0 48 48"><path d="M14 14h18l-2 26H16z" fill="#ffb547"/><path d="M13 10c2-3 6-2 8-1 2-2 6-2 8 0 3-1 5 1 4 4H13z" fill="#fff" stroke="#e8d9a8" stroke-width="1.5"/><path d="M32 18h4a3 3 0 013 3v6a3 3 0 01-3 3h-4" stroke="#c98d1c" stroke-width="2.5" fill="none"/></svg>'],
+};
 
+// ---------- Estado abierto/cerrado ----------
+const hhmm = m => `${Math.floor(m/60)}:${String(m%60).padStart(2,"0")}`;
+function estadoAhora(){
+  const d = new Date(), min = d.getHours()*60 + d.getMinutes();
+  const h = NEGOCIO.abierto[d.getDay()], el = $("#estado");
+  if (h && min >= h[0] && min < h[1]) {
+    el.querySelector("span").textContent = `Abierto ahora · hasta las ${hhmm(h[1])}`;
+    $("#horaHoy").textContent = `Hoy hasta las ${hhmm(h[1])}`;
+  } else {
+    el.classList.add("cerrado"); el.querySelector("span").textContent = "Cerrado · deja tu pedido para mañana";
+    $("#horaHoy").textContent = h ? `Hoy de ${hhmm(h[0])} a ${hhmm(h[1])}` : "Hoy cerrado";
+  }
+}
+function pintarHorario(){
+  const hoy = (new Date().getDay()+6)%7;
+  $("#horario").innerHTML = NEGOCIO.horario.map((h,i)=>`<div class="${i===hoy?'hoy':''}"><span>${h[0]}</span><span>${h[1]}</span></div>`).join("");
+}
+function pintarBarras(){
+  $("#barras").innerHTML = [5,4,3,2,1].map(n=>{
+    const v = NEGOCIO.estrellas[n];
+    return `<div><span>${n}★</span><span class="b"><i style="width:${v/NEGOCIO.resenas*100}%"></i></span><span>${v}</span></div>`;
+  }).join("");
+  $("#miniBarras").innerHTML = [1,2,3,4,5].map(n=>`<i style="height:${Math.max(6, NEGOCIO.estrellas[n]/324*70)}px"></i>`).join("");
+}
+
+// ---------- Carta ----------
+const tamElegido = {};
+const tamDe = p => p.tamanos ? (tamElegido[p.id] || Object.keys(p.tamanos)[0]) : null;
+const claveDe = p => p.id + (p.tamanos ? "|" + tamDe(p) : "");
+const precioDe = p => p.tamanos ? p.tamanos[tamDe(p)] : p.precio;
+
+function pintarChips(){
+  const todas = [{id:"todas",nombre:"Todo"}, ...CATEGORIAS];
+  $("#chips").innerHTML = todas.map(c=>`<button class="chip ${c.id===categoria?'on':''}" data-cat="${c.id}">${c.nombre}</button>`).join("");
+}
+function pintarCarta(){
+  const q = $("#buscar").value.trim().toLowerCase();
+  let html = "";
+  CATEGORIAS.filter(c=>categoria==="todas"||c.id===categoria).forEach(c=>{
+    const items = CARTA.filter(p=>p.cat===c.id && (!q || (p.nombre+" "+p.desc).toLowerCase().includes(q)));
+    if(!items.length) return;
+    const [color, svg] = ICONOS[c.id];
+    html += `<div class="grupo"><h3>${c.nombre} <small>${items.length}</small></h3><div class="platos">` + items.map(p=>{
+      const l = carro.find(x=>x.clave===claveDe(p));
+      const tams = p.tamanos ? `<div class="tam">${Object.keys(p.tamanos).map(t=>`<button data-tam="${t}" data-id="${p.id}" class="${tamDe(p)===t?'on':''}">${t}</button>`).join("")}</div>` : "";
+      const accion = l
+        ? `<div class="stepper"><button data-menos-id="${p.id}" aria-label="Quitar uno">−</button><b>${l.cant}</b><button data-add="${p.id}" aria-label="Añadir uno">+</button></div>`
+        : `<button class="anadir" data-add="${p.id}" aria-label="Añadir ${p.nombre}">+ Añadir</button>`;
+      return `<article class="plato ${l?'en-carro':''}">
+        <div class="foto" style="background:${color}">${svg}${p.estrella?'<span class="fav">TOP</span>':''}</div>
+        <div class="info"><h4>${p.nombre}</h4>${p.desc?`<p>${p.desc}</p>`:""}
+          <div class="pie"><span class="precio">${euros(precioDe(p))}</span>${tams}${accion}</div></div>
+      </article>`;
+    }).join("") + `</div></div>`;
+  });
+  $("#listaCarta").innerHTML = html || `<p class="vacio">No hay nada con “${q}”.</p>`;
+}
+
+$("#chips").addEventListener("click", e=>{ const b=e.target.closest("[data-cat]"); if(!b) return; categoria=b.dataset.cat; pintarChips(); pintarCarta(); });
+$("#buscar").addEventListener("input", pintarCarta);
+$("#listaCarta").addEventListener("click", e=>{
+  const t = e.target.closest("[data-tam]");
+  if (t){ tamElegido[t.dataset.id]=t.dataset.tam; pintarCarta(); return; }
+  const a = e.target.closest("[data-add]");
+  if (a){ anadir(a.dataset.add); return; }
+  const m = e.target.closest("[data-menos-id]");
+  if (m){ const p = CARTA.find(x=>x.id===m.dataset.menosId); cambiar(claveDe(p), -1); }
+});
+
+// ---------- Carrito ----------
+function anadir(id){
+  const p = CARTA.find(x=>x.id===id), tam = tamDe(p), clave = claveDe(p);
+  const l = carro.find(x=>x.clave===clave);
+  if (l) l.cant++; else { carro.push({clave, id, cat:p.cat, nombre:p.nombre, tam, precio:precioDe(p), cant:1}); aviso(`${p.nombre}${tam?" ("+tam.toLowerCase()+")":""} añadido`); }
+  actualizar();
+}
+function cambiar(clave, d){
+  const i = carro.findIndex(x=>x.clave===clave); if (i<0) return;
+  carro[i].cant += d; if (carro[i].cant<=0) carro.splice(i,1);
+  actualizar();
+}
+const totalCarro = () => carro.reduce((s,l)=>s+l.precio*l.cant,0);
+const unidades = () => carro.reduce((s,l)=>s+l.cant,0);
+function actualizar(){
+  const n = unidades();
+  $("#contador").textContent = n;
+  $("#total").textContent = euros(totalCarro());
+  $("#fTotal").textContent = euros(totalCarro());
+  $("#fCant").textContent = `${n} ${n===1?"producto":"productos"}`;
+  $("#pedir").disabled = !carro.length;
+  $("#flotante").classList.toggle("on", n>0 && !$("#cajon").classList.contains("on"));
+  pintarCarta();
+  if ($("#cajon").classList.contains("on")) pintarLineas();
+}
+function opcionesHora(){
+  const d = new Date(), out = [];
+  let dia = d.getDay(), h = NEGOCIO.abierto[dia], ini = d.getHours()*60+d.getMinutes()+15, etiqueta = "Hoy";
+  if (!h || ini >= h[1]-15){
+    for(let i=1;i<8;i++){ const dd=(dia+i)%7; if(NEGOCIO.abierto[dd]){ h=NEGOCIO.abierto[dd]; ini=h[0]+15; etiqueta = i===1?"Mañana":NEGOCIO.horario[(dd+6)%7][0]; break; } }
+  }
+  ini = Math.ceil(Math.max(ini, h[0]+15)/15)*15;
+  for(let m=ini; m<=h[1]-15; m+=15) out.push(`${etiqueta} ${hhmm(m)}`);
+  return out;
+}
+function pintarLineas(){
+  const cont = $("#lineas"); if (!cont) return pintarCajon();
+  if (!carro.length) return pintarCajon();
+  cont.innerHTML = carro.map(l=>{ const [c,svg]=ICONOS[l.cat];
+    return `<div class="linea"><div class="mini" style="background:${c}">${svg}</div><div class="n"><b>${l.nombre}</b><small>${l.tam?l.tam+" · ":""}${euros(l.precio)}</small></div>
+    <div class="stepper"><button data-cambio="-1" data-clave="${l.clave}" aria-label="Quitar uno">−</button><b>${l.cant}</b><button data-cambio="1" data-clave="${l.clave}" aria-label="Añadir uno">+</button></div></div>`; }).join("");
+}
+function pintarCajon(){
+  $("#cajonTitulo").textContent = "Tu pedido"; $("#cajonPie").style.display="";
+  if (!carro.length){ $("#cuerpo").innerHTML = `<div class="vacio"><p style="font-size:22px;font-weight:800;color:var(--ink)">Aún no hay nada.</p><p>Empieza por una tostada de jamón.</p></div>`; return; }
+  const horas = opcionesHora().map(h=>`<option>${h}</option>`).join("");
+  $("#cuerpo").innerHTML = `<div id="lineas"></div><div class="form">
+    <label>¿Cómo lo quieres?</label>
+    <div class="modo"><button data-modo="recoger" class="${modo==='recoger'?'on':''}">🛍 Para recoger</button><button data-modo="mesa" class="${modo==='mesa'?'on':''}">🍽 En mesa</button></div>
+    ${modo==='mesa' ? `<label for="fMesa">Número de mesa</label><input id="fMesa" type="number" inputmode="numeric" min="1" max="30" value="${mesa||''}" placeholder="Ej. 4">`
+      : `<label for="fHora">Hora de recogida</label><select id="fHora">${horas}</select>`}
+    <label for="fNombre">Nombre</label><input id="fNombre" autocomplete="name" placeholder="Tu nombre">
+    <label for="fTel">Teléfono (opcional)</label><input id="fTel" type="tel" autocomplete="tel" placeholder="600 000 000">
+    <label for="fNotas">Notas</label><textarea id="fNotas" rows="2" placeholder="Leche sin lactosa, pan bien tostado…"></textarea>
+  </div>`;
+  pintarLineas();
+}
+$("#cuerpo").addEventListener("click", e=>{
+  const c = e.target.closest("[data-cambio]"), md = e.target.closest("[data-modo]");
+  if (c){ cambiar(c.dataset.clave, +c.dataset.cambio); }
+  if (md){ modo = md.dataset.modo; pintarCajon(); }
+});
+function abrir(){ pintarCajon(); $("#cajon").classList.add("on"); $("#velo").classList.add("on"); $("#flotante").classList.remove("on"); }
+function cerrar(){ $("#cajon").classList.remove("on"); $("#velo").classList.remove("on"); $("#flotante").classList.toggle("on", unidades()>0); }
+$("#abrirCarro").onclick = abrir; $("#fAbrir").onclick = abrir; $("#cerrarCarro").onclick = cerrar; $("#velo").onclick = cerrar;
+document.addEventListener("keydown", e=>{ if(e.key==="Escape") cerrar(); });
+
+$("#pedir").onclick = ()=>{
+  const nombre = $("#fNombre").value.trim();
+  if (!nombre){ $("#fNombre").focus(); aviso("Escribe tu nombre"); return; }
+  let destino;
+  if (modo==="mesa"){ const v=$("#fMesa").value; if(!v){ $("#fMesa").focus(); aviso("Indica el número de mesa"); return; } destino = "Mesa "+v; }
+  else destino = "Recoger · " + $("#fHora").value;
+  const pedidos = leerPedidos();
+  const num = (pedidos.reduce((m,p)=>Math.max(m,p.num),0) || 100) + 1;
+  const pedido = { num, fecha: new Date().toISOString(), nombre, tel: $("#fTel").value.trim(), notas: $("#fNotas").value.trim(), modo, destino,
+    lineas: carro.map(l=>({nombre:l.nombre,tam:l.tam,precio:l.precio,cant:l.cant})), total: totalCarro(), estado: "nuevo" };
+  pedidos.push(pedido); guardarPedidos(pedidos);
+  const texto = `Hola Rodri, pedido #${num} de ${nombre}\n${destino}\n` + pedido.lineas.map(l=>`${l.cant}× ${l.nombre}${l.tam?" ("+l.tam+")":""}`).join("\n") + `\nTotal: ${euros(pedido.total)}` + (pedido.notas?`\nNotas: ${pedido.notas}`:"");
+  carro = []; actualizar(); $("#flotante").classList.remove("on");
+  $("#cajonTitulo").textContent = ""; $("#cajonPie").style.display="none";
+  $("#cuerpo").innerHTML = `<div class="ok">
+    <div class="check"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#111512" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg></div>
+    <p style="color:var(--ink-2);font-weight:600">Pedido enviado · tu número es</p><div class="num">#${num}</div>
+    <p style="margin:6px 0 2px;font-weight:800">${destino}</p><p style="color:var(--ink-2)">Total ${euros(pedido.total)} · pagas en barra</p>
+    <a class="btn wa" style="margin-top:24px" target="_blank" rel="noopener" href="https://wa.me/${NEGOCIO.whatsapp}?text=${encodeURIComponent(texto)}">Enviar también por WhatsApp</a>
+    <button class="btn borde" onclick="cerrar()">Seguir mirando la carta</button></div>`;
+};
+
+let tToast;
+function aviso(t){ const el=$("#toast"); el.textContent=t; el.classList.add("on"); clearTimeout(tToast); tToast=setTimeout(()=>el.classList.remove("on"),1600); }
+
+// Animación de aparición
+const obs = "IntersectionObserver" in window ? new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add("visto"); obs.unobserve(e.target); } }),{threshold:.12}) : null;
+document.querySelectorAll(".aparece").forEach((el,i)=>{ el.style.transitionDelay = (i%4*70)+"ms"; obs ? obs.observe(el) : el.classList.add("visto"); });
+
+// ---------- Inicio ----------
+if (mesa){ const a=$("#mesaAviso"); a.style.display="flex"; a.innerHTML=`<b>Mesa ${mesa}</b> Pide desde aquí y te lo llevamos.`; }
+estadoAhora(); pintarHorario(); pintarBarras(); pintarChips(); actualizar();
+</script>
 </body>
 </html>
