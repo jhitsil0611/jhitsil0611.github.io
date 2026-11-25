@@ -8,14 +8,14 @@
 // Si se entra desde el QR de una mesa (?mesa=N) y el navegador no es Chrome, intenta abrir la misma página en Chrome.
 // iPhone: esquema googlechromes:// (iOS pregunta "¿Abrir en Chrome?"). Android: intent:// con vuelta a la web si no hay Chrome.
 (function(){
-  var ua = navigator.userAgent, url = location.href;
+  var ua = navigator.userAgent, url = location.href, urlSinHash = url.split("#")[0];
   if (!/[?&]mesa=\d+/.test(location.search)) return;
   var ios = /iPhone|iPad|iPod/.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1);
   var android = /Android/.test(ua);
   var esChrome = ios ? /CriOS/.test(ua) : (/Chrome\//.test(ua) && !/SamsungBrowser|EdgA|OPR|Firefox|; wv\)|YaBrowser|MiuiBrowser/.test(ua));
   if (esChrome || !(ios || android)) return;
   var destino = ios ? url.replace(/^https:\/\//, "googlechromes://").replace(/^http:\/\//, "googlechrome://")
-    : "intent://" + url.replace(/^https?:\/\//, "") + "#Intent;scheme=https;package=com.android.chrome;S.browser_fallback_url=" + encodeURIComponent(url) + ";end";
+    : "intent://" + urlSinHash.replace(/^https?:\/\//, "") + "#Intent;scheme=https;package=com.android.chrome;S.browser_fallback_url=" + encodeURIComponent(url) + ";end";
   window.ABRIR_EN_CHROME = destino;
   try { if (sessionStorage.getItem("rodri_chrome_intentado")) return; sessionStorage.setItem("rodri_chrome_intentado", "1"); } catch (e) {}
   location.href = destino;
